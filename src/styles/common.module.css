@@ -16,18 +16,18 @@ body {
 }
 
 button,
-input[type="reset"],
-input[type="submit"] {
+input[type='reset'],
+input[type='submit'] {
   padding: 0.25rem 0.5rem;
   font-size: var(--spacer);
   cursor: pointer;
 }
-input[type="date"] {
+input[type='date'] {
   padding: var(--spacer);
   border-radius: 0.6rem;
   border: transparent;
 }
-input[type="checkbox"] {
+input[type='checkbox'] {
   height: var(--spacer);
   width: var(--spacer);
   cursor: pointer;
@@ -35,12 +35,7 @@ input[type="checkbox"] {
 .grow {
   flex-grow: 1;
 }
-.p-1 {
-  padding: var(--spacer);
-}
-.py-1 {
-  padding: var(--spacer) 0;
-}
+
 th,
 td {
   text-align: center;
@@ -70,6 +65,9 @@ table {
 .justify-end {
   justify-content: end;
 }
+.justify-between {
+  justify-content: between;
+}
 
 .px-1 {
   padding-right: calc(var(--spacer) * 0.25);
@@ -91,6 +89,42 @@ table {
   padding-right: calc(var(--spacer) * 1.25);
   padding-left: calc(var(--spacer) * 1.25);
 }
+.py-1 {
+  padding-top: calc(var(--spacer) * 0.25);
+  padding-bottom: calc(var(--spacer) * 0.25);
+}
+.py-2 {
+  padding-top: calc(var(--spacer) * 0.5);
+  padding-bottom: calc(var(--spacer) * 0.5);
+}
+.py-3 {
+  padding-top: calc(var(--spacer) * 0.75);
+  padding-bottom: calc(var(--spacer) * 0.75);
+}
+.py-4 {
+  padding-top: calc(var(--spacer));
+  padding-bottom: calc(var(--spacer));
+}
+.py-5 {
+  padding-top: calc(var(--spacer) * 1.25);
+  padding-bottom: calc(var(--spacer) * 1.25);
+}
+.p-1 {
+  padding: calc(var(--spacer) * 0.25);
+}
+.p-2 {
+  padding: calc(var(--spacer) * 0.5);
+}
+.p-3 {
+  padding: calc(var(--spacer) * 0.75);
+}
+.p-4 {
+  padding: calc(var(--spacer));
+}
+.p-5 {
+  padding: calc(var(--spacer) * 1.25);
+}
+
 .gap-1 {
   gap: calc(var(--spacer) * 0.25);
 }
@@ -107,27 +141,27 @@ table {
   gap: calc(var(--spacer) * 1.25);
 }
 
-.font-size-16 {
-  font-size: 16px;
-  font-weight: 550;
-}
 input {
   margin: 0;
   padding: 0.25rem;
   border-radius: 0.25rem;
-  width: min-content;
+  width: fit-content;
 }
 .error {
   color: var(--color-error);
 }
-
-.display-none {
+.block {
+  display: block;
+}
+.hidden {
   display: none;
 }
 p,
+b,
 span,
-h1,
 button,
+input,
+h1,
 h2,
 h3,
 h4,
@@ -135,33 +169,6 @@ h5,
 h6 {
   margin: 0;
   padding: 0;
-}
-form > input {
-  width: min-content;
-}
-input {
-  margin: 0;
-}
-.sort-btn {
-  border: none;
-  background: none;
-  padding: 0;
-  align-items: center;
-  background: white;
-}
-.icon-sm {
-  height: 1.5rem;
-  width: 1.5rem;
-  color: black;
-}
-.arrow {
-  content: url("../assets/img/arrow-down.svg");
-}
-.arrow[data-asc="true"] {
-  content: url("../assets/img/arrow-down.svg");
-}
-.arrow[data-asc="false"] {
-  content: url("../assets/img/arrow-up.svg");
 }
 .container {
   height: 100%;
