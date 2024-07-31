@@ -1,5 +1,5 @@
-import { useRef } from 'react';
-import './App.css';
+import { useRef } from "react";
+import "./App.css";
 
 function App() {
   // const [numbers, setNumbers] = useState([1, 2, 3, 4]);
@@ -13,11 +13,13 @@ function App() {
   const dialogRef = useRef<HTMLDialogElement>(null);
   return (
     <>
-      <dialog ref={dialogRef} id='my-dialog'>
+      <dialog ref={dialogRef} id="my-dialog">
         <button onClick={() => dialogRef.current?.close()}>Close Dialog</button>
         hellod
       </dialog>
-      <button onClick={() => dialogRef.current?.showModal()}>Open Dialog</button>
+      <button onClick={() => dialogRef.current?.showModal()}>
+        Open Dialog
+      </button>
       {/* {users.filter((user) => user.age > 30).map((user) => (
         <div key={user.name} className=''>
           <h2>{user.name}</h2>
