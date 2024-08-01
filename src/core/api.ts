@@ -6,12 +6,8 @@ export const commonHeaders = {
   'Content-Type': 'application/json'
 };
 
-// {
-//   token : string
-// }
-function getToken(){
+export function getToken(){
   const token = sessionStorage.getItem(AUTH_TOKEN);
-  if(!token) throw new Error('user must be logged in');
   return token ? { Authorization: `Bearer ${token}` } : undefined;
 }
 
