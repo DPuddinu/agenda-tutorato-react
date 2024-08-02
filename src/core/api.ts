@@ -67,32 +67,5 @@ export const api = {
         method: 'DELETE'
       },
       withAuth
-    ),
-
-  login: async (username: string, password: string) => {
-    const response = await fetchWithAuth(
-      '/login',
-      {
-        method: 'POST',
-        body: JSON.stringify({ username, password }),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      },
-      false
-    );
-
-    if (!response.ok) {
-      throw new Error('Login failed');
-    }
-
-    const data = await response.json();
-    const token = data.token;
-
-    if (token) {
-      sessionStorage.setItem(AUTH_TOKEN, token);
-    }
-
-    return data;
-  }
+    ), 
 };
