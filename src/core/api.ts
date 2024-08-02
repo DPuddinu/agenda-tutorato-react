@@ -20,7 +20,6 @@ async function fetchWithAuth(path: string, options: RequestInit, withAuth: boole
 
   return fetch(`${BASE_URL}${path}`, { ...options, headers });
 }
-
 export const api = {
   get: async (path: string, withAuth = true) =>
     fetchWithAuth(
@@ -68,5 +67,32 @@ export const api = {
         method: 'DELETE'
       },
       withAuth
-    )
+    ),
+
+  login: async (username: string, password: string) => {
+    const response = await fetchWithAuth(
+      '/login',
+      {
+        method: 'POST',
+        body: JSON.stringify({ username, password }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      },
+      false
+    );
+
+    if (!response.ok) {
+      throw new Error('Login failed');
+    }
+
+    const data = await response.json();
+    const token = data.token;
+
+    if (token) {
+      sessionStorage.setItem(AUTH_TOKEN, token);
+    }
+
+    return data;
+  }
 };
