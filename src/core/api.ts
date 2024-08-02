@@ -20,7 +20,6 @@ async function fetchWithAuth(path: string, options: RequestInit, withAuth: boole
 
   return fetch(`${BASE_URL}${path}`, { ...options, headers });
 }
-
 export const api = {
   get: async (path: string, withAuth = true) =>
     fetchWithAuth(
@@ -68,5 +67,5 @@ export const api = {
         method: 'DELETE'
       },
       withAuth
-    )
+    ), 
 };
