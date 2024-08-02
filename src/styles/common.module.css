@@ -13,6 +13,8 @@ body {
   min-height: 100dvh;
   margin: 0;
   font-family: Arial, sans-serif;
+  justify-content: center;
+  align-items: center;
 }
 
 button,
@@ -59,6 +61,7 @@ table {
 .items-center {
   align-items: center;
 }
+
 .justify-center {
   justify-content: center;
 }
@@ -108,6 +111,9 @@ table {
 .py-5 {
   padding-top: calc(var(--spacer) * 1.25);
   padding-bottom: calc(var(--spacer) * 1.25);
+}
+.pt-1 {
+  padding-top: calc(var(--spacer) * 2.25);
 }
 .p-1 {
   padding: calc(var(--spacer) * 0.25);
@@ -177,4 +183,63 @@ h6 {
 }
 .items-baseline {
   justify-content: baseline;
+}
+.form-box {
+  background-color: #ffffff;
+  padding: 50px;
+  border-radius: 15px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+}
+.container.signin {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.container.signin a {
+  color: #0092b9;
+  text-decoration: none;
+}
+
+.container.signin a:hover {
+  text-decoration: underline;
+}
+input[type="email"] {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 2px #ffffff solid;
+  border-bottom-color: #0092b9;
+  box-sizing: border-box;
+}
+
+input[type="password"],
+input[type="email"] {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 2px #ffffff solid;
+  border-bottom-color: rgb(24, 24, 27);
+  box-sizing: border-box;
+}
+
+input[type="password"]:focus,
+input[type="email"]:focus {
+  border-bottom-color: rgb(24, 24, 27);
+  outline: none;
+}
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: rgb(24, 24, 27);
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 16px;
+}
+.border-t-1{
+  border-top: 1px solid #b8b8b8 ;
+}
+.width-auto{
+  width:auto;
+}
+.font-color-link{
+  color:rgb(110, 110, 119)
 }
