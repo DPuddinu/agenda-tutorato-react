@@ -1,6 +1,6 @@
 import { ProtectedPage } from "@/components/protected-page";
 import { LandingPage } from "@/pages/landing-page";
-import { LoginPage } from "@/pages/login-page";
+import { LoginPage } from "@/pages/login/login-page";
 import { createBrowserRouter } from "react-router-dom";
 
 export const router = createBrowserRouter([
