@@ -4,7 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigate } from 'react-router-dom';
 import { LoginFormSchema, LoginPayload } from '../../features/auth/types/auth.types.ts';
 import { login } from '../../features/auth/api/auth';
-import styles from '@/styles/common.module.css';
+import '@/styles/common.css';
 
 export const LoginPage: React.FC = () => {
   const navigate = useNavigate();
@@ -29,38 +29,38 @@ export const LoginPage: React.FC = () => {
 };
 
   return (
-    <div className={`${styles['container']} ${styles['form-box']}`}>
+    <div className="container form-box">
       <form
         id="loginForm"
-        className={`${styles['flex-col']} ${styles['gap-5']}`}
+        className="flex-col gap-5"
         onSubmit={handleSubmit(onSubmit)}
       >
         <h2>Login</h2>
-        <p className={styles['py-5']}>Enter your email and password to access your account.</p>
-        <div className={`${styles.flex} ${styles['flex-col']} ${styles['items-baseline']} ${styles['gap-2']}`}>
+        <p className="py-5">Enter your email and password to access your account.</p>
+        <div className="flex flex-col items-baseline gap-2">
           <label htmlFor="email"><strong>Email</strong></label>
           <input
             id="email"
             type="email"
             placeholder="example@email.com"
-            className={styles['width-auto']}
+            className="width-auto"
             {...register('email')}
           />
-          {errors.email && <span id="errorUser" className={styles.error}>{errors.email.message}</span>}
+          {errors.email && <span id="errorUser" className="error">{errors.email.message}</span>}
         </div>
-        <div className={`${styles.flex} ${styles['flex-col']} ${styles['items-baseline']} ${styles['gap-2']}`}>
-          <label htmlFor="password" className={`${styles.flex} ${styles['gap-2']}`}><strong>Password</strong></label>
+        <div className="flex flex-col items-baseline gap-2">
+          <label htmlFor="password" className="flex gap-2"><strong>Password</strong></label>
           <input
             id="password"
             type="password"
-            className={styles['width-auto']}
+            className="width-auto"
             {...register('password')}
           />
-          {errors.password && <span id="errorPass" className={styles.error}>{errors.password.message}</span>}
+          {errors.password && <span id="errorPass" className="error">{errors.password.message}</span>}
         </div>
         <button type="submit" disabled={isSubmitting}>Sign in</button>
-        <div className={`${styles.flex} ${styles['flex-col']} ${styles['signin']} ${styles['items-center']} ${styles['justify-center']} ${styles['border-t-1']} ${styles['pt-1']}`}>
-          <p>Don't have an account? <a href="/register" className={styles['font-color-link']}>Register</a>.</p>
+        <div className="flex flex-col signin items-center justify-center border-t-1 pt-1">
+          <p>Don't have an account? <a href="/register" className="font-color-link">Register</a>.</p>
         </div>
       </form>
     </div>
