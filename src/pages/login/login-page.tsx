@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { LoginFormSchema, LoginPayload } from '../../features/auth/types/auth.types.ts';
 import { login } from '../../features/auth/api/auth';
 import '@/styles/common.css';
+import './login.css'
 
 export const LoginPage: React.FC = () => {
   const navigate = useNavigate();
