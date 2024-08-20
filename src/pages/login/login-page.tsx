@@ -39,7 +39,7 @@ export const LoginPage: React.FC = () => {
         <h2>Login</h2>
         <p className="py-5">Enter your email and password to access your account.</p>
         <div className="flex flex-col items-baseline gap-2">
-          <label htmlFor="email"><strong>Email</strong></label>
+          <label htmlFor="email"><b>Email</b></label>
           <input
             id="email"
             type="email"
@@ -50,7 +50,7 @@ export const LoginPage: React.FC = () => {
           {errors.email && <span id="errorUser" className="error">{errors.email.message}</span>}
         </div>
         <div className="flex flex-col items-baseline gap-2">
-          <label htmlFor="password" className="flex gap-2"><strong>Password</strong></label>
+          <label htmlFor="password" className="flex gap-2"><b>Password</b></label>
           <input
             id="password"
             type="password"

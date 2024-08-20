@@ -9,7 +9,7 @@ export const RegisterPage = () => (
         <h2>Register</h2>
         <p className="py-5">Enter your email and password to create your account.</p>
         <div className="flex flex-col items-baseline gap-2">
-          <label htmlFor="email"><strong>Email</strong></label>
+          <label htmlFor="email"><b>Email</b></label>
           <input
             id="email"
             type="email"
@@ -19,7 +19,7 @@ export const RegisterPage = () => (
           <span id="errorUser" className="error"></span>
         </div>
         <div className="flex flex-col items-baseline gap-2">
-          <label htmlFor="password"><strong>Password</strong></label>
+          <label htmlFor="password"><b>Password</b></label>
           <input
             id="password"
             type="password"
@@ -28,7 +28,7 @@ export const RegisterPage = () => (
           <span id="errorPass" className="error"></span>
         </div>
         <div className="flex flex-col items-baseline gap-2">
-          <label htmlFor="confirmPassword"><strong>Confirm Password</strong></label>
+          <label htmlFor="confirmPassword"><b>Confirm Password</b></label>
           <input
             id="confirmPassword"
             type="password"
