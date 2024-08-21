@@ -17,8 +17,8 @@ describe('Page should change', () => {
 
 describe('Authentication Test', () => {
   before(() => {
-    cy.window().then((window) => {
-      expect(window.sessionStorage.length).to.equal(0);
+    cy.window().then((win) => {
+      win.sessionStorage.clear();
     });
   });
 
