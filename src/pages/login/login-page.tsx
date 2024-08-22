@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigate } from 'react-router-dom';
@@ -9,6 +9,7 @@ import './login.css'
 
 export const LoginPage: React.FC = () => {
   const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
 
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<LoginPayload>({
@@ -16,18 +17,18 @@ export const LoginPage: React.FC = () => {
   });
 
 
-  const onSubmit = async (data: LoginPayload) => {
-  try {
-    await login(data.email, data.password);
-    navigate('/dashboard');
-  } catch (error) {
-    if (error instanceof Error) {
-      alert('Login failed: ' + error.message);
-    } else {
-      alert('An unexpected error occurred.');
+   const onSubmit = async (data: LoginPayload) => {
+    try {
+      await login(data.email, data.password);
+      navigate('/dashboard');
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        setErrorMessage(error.message);
+      } else {
+        setErrorMessage('An unexpected error occurred.');
+      }
     }
-  }
-};
+  };
 
   return (
     <div className="container form-box">
@@ -59,6 +60,7 @@ export const LoginPage: React.FC = () => {
           />
           {errors.password && <span id="errorPass" className="error">{errors.password.message}</span>}
         </div>
+          {errorMessage && <span id="loginError" className="error">{errorMessage}</span>}
         <button type="submit" disabled={isSubmitting}>Sign in</button>
         <div className="flex flex-col signin items-center justify-center border-t-1 pt-1">
           <p>Don't have an account? <a href="/register" className="font-color-link">Register</a>.</p>

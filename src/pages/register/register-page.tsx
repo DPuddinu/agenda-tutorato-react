@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigate } from 'react-router-dom';
@@ -9,6 +9,7 @@ import '@/styles/common.css';
 
 export const RegisterPage: React.FC = () => {
   const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState<string |null> (null);
 
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<RegisterPayload>({
     resolver: zodResolver(RegisterFormSchema)
@@ -18,11 +19,11 @@ export const RegisterPage: React.FC = () => {
     try {
       await registerUser(data.email, data.password, data.confirmPassword);
       navigate('/dashboard');
-    } catch (error) {
+    } catch (error: unknown) {
       if (error instanceof Error) {
-        alert('Registration failed: ' + error.message);
+        setErrorMessage(error.message);
       } else {
-        alert('An unexpected error occurred.');
+        setErrorMessage('An unexpected error occurred.');
       }
     }
   };
@@ -67,6 +68,7 @@ export const RegisterPage: React.FC = () => {
           />
           {errors.confirmPassword && <span id="errorConfirmPass" className="error">{errors.confirmPassword.message}</span>}
         </div>
+          {errorMessage && <span id="registerError" className="error">{errorMessage}</span>}
         <button type="submit" disabled={isSubmitting}>Sign up</button>
         <div className="flex flex-col signin items-center justify-center border-t-1 pt-1">
           <p>Have an account? <a href="/login" className="font-color-link">Login</a>.</p>
