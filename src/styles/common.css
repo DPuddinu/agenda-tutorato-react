@@ -203,7 +203,7 @@ h6 {
 .container.signin a:hover {
   text-decoration: underline;
 }
-input[type="email"] {
+input[type='email'] {
   padding: 10px;
   margin-bottom: 10px;
   border: 2px #ffffff solid;
@@ -211,8 +211,8 @@ input[type="email"] {
   box-sizing: border-box;
 }
 
-input[type="password"],
-input[type="email"] {
+input[type='password'],
+input[type='email'] {
   padding: 10px;
   margin-bottom: 10px;
   border: 2px #ffffff solid;
@@ -220,12 +220,12 @@ input[type="email"] {
   box-sizing: border-box;
 }
 
-input[type="password"]:focus,
-input[type="email"]:focus {
+input[type='password']:focus,
+input[type='email']:focus {
   border-bottom-color: rgb(24, 24, 27);
   outline: none;
 }
-button[type="submit"] {
+button[type='submit'] {
   width: 100%;
   padding: 10px;
   background-color: rgb(24, 24, 27);
@@ -234,12 +234,12 @@ button[type="submit"] {
   color: white;
   font-size: 16px;
 }
-.border-t-1{
-  border-top: 1px solid #b8b8b8 ;
+.border-t-1 {
+  border-top: 1px solid #b8b8b8;
 }
-.width-auto{
-  width:auto;
+.width-auto {
+  width: auto;
 }
-.font-color-link{
-  color:rgb(110, 110, 119)
+.font-color-link {
+  color: rgb(110, 110, 119);
 }
