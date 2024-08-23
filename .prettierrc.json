@@ -3,6 +3,6 @@
   "printWidth": 120,
   "bracketSameLine": true,
   "htmlWhitespaceSensitivity": "ignore",
-  "trailingComma" : "none",
-  "plugins": ["prettier-plugin-organize-imports", "prettier-plugin-tailwindcss"]
+  "trailingComma": "none",
+  "plugins": ["prettier-plugin-organize-imports"]
 }

@@ -1,5 +1,4 @@
-import { PropsWithChildren, useState } from "react";
-import { createContext } from "react";
+import { createContext, PropsWithChildren, useState } from 'react';
 
 export interface IAuthContext {
   token: string | null;
@@ -8,12 +7,8 @@ export interface IAuthContext {
 
 export const AuthContext = createContext<IAuthContext | undefined>(undefined);
 
-export const AuthProvider = ({ children } : PropsWithChildren) => {
+export const AuthProvider = ({ children }: PropsWithChildren) => {
   const [token, setToken] = useState<string | null>(null);
 
-  return (
-    <AuthContext.Provider value={{token, setToken}}>
-      {children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={{ token, setToken }}>{children}</AuthContext.Provider>;
 };
