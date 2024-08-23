@@ -1,4 +1,3 @@
-
 export const AUTH_TOKEN = 'auth-token';
 export const BASE_URL = 'http://localhost:3001';
 
@@ -6,7 +5,7 @@ export const commonHeaders = {
   'Content-Type': 'application/json'
 };
 
-export function getToken(){
+export function getToken() {
   const token = sessionStorage.getItem(AUTH_TOKEN);
   return token ? { Authorization: `Bearer ${token}` } : undefined;
 }
@@ -25,7 +24,7 @@ export const api = {
     fetchWithAuth(
       path,
       {
-        method: 'GET',
+        method: 'GET'
       },
       withAuth
     ),
@@ -67,5 +66,5 @@ export const api = {
         method: 'DELETE'
       },
       withAuth
-    ), 
+    )
 };
