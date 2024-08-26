@@ -42,6 +42,7 @@ export const LoginPage: React.FC = () => {
             <b>Email</b>
           </label>
           <input
+            required
             id="email"
             type="email"
             placeholder="example@email.com"
@@ -58,7 +59,7 @@ export const LoginPage: React.FC = () => {
           <label htmlFor="password" className="flex gap-2">
             <b>Password</b>
           </label>
-          <input id="password" type="password" className="width-auto" {...register('password')} />
+          <input required id="password" type="password" className="width-auto" {...register('password')} />
           {errors.password && (
             <span id="errorPass" className="error">
               {errors.password.message}
