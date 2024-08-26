@@ -64,8 +64,8 @@ export const LoginPage: React.FC = () => {
               {errors.password.message}
             </span>
           )}
-        </div>
           {errorMessage && <span id="loginError" className="error">{errorMessage}</span>}
+        </div>
         <button type="submit" disabled={isSubmitting}>Sign in</button>
         <div className="flex flex-col signin items-center justify-center border-t-1 pt-1">
           <p>
