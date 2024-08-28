@@ -1,5 +1,1 @@
-export const AppointmentsPage = () => (
-  <div>
-    AppointmentsPage
-  </div>
-);
+export const AppointmentsPage = () => <div>AppointmentsPage</div>;

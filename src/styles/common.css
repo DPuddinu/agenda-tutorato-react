@@ -308,6 +308,7 @@ input {
 
 .error {
   color: var(--color-error);
+  padding-bottom: 1.25rem;
 }
 
 .block {
@@ -372,8 +373,8 @@ input[type="email"] {
   box-sizing: border-box;
 }
 
-input[type="password"],
-input[type="email"] {
+input[type='password'],
+input[type='email'] {
   padding: 10px;
   margin-bottom: 10px;
   border: 2px #ffffff solid;
