@@ -61,7 +61,7 @@ export const LoginPage: React.FC = () => {
           {errors.password && <span id="errorPass" className="error">{errors.password.message}</span>}
         </div>
           {errorMessage && <span id="loginError" className="error">{errorMessage}</span>}
-        <button type="submit" disabled={isSubmitting}>Sign in</button>
+        <button className="p-4" type="submit" disabled={isSubmitting}>Sign in</button>
         <div className="flex flex-col signin items-center justify-center border-t-1 pt-1">
           <p>Don't have an account? <a href="/register" className="font-color-link">Register</a>.</p>
         </div>

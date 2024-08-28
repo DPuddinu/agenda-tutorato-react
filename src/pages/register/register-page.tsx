@@ -69,7 +69,7 @@ export const RegisterPage: React.FC = () => {
           {errors.confirmPassword && <span id="errorConfirmPass" className="error">{errors.confirmPassword.message}</span>}
         </div>
           {errorMessage && <span id="registerError" className="error">{errorMessage}</span>}
-        <button type="submit" disabled={isSubmitting}>Sign up</button>
+        <button className="p-4" type="submit" disabled={isSubmitting}>Sign up</button>
         <div className="flex flex-col signin items-center justify-center border-t-1 pt-1">
           <p>Have an account? <a href="/login" className="font-color-link">Login</a>.</p>
         </div>
