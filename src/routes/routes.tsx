@@ -1,5 +1,6 @@
 import { ProtectedPage } from '@/components/protected-page';
-import { LandingPage } from '@/pages/landing-page';
+import { AppointmentsPage } from '@/pages/appointments/appointments-page';
+import { LandingPageComponent } from '@/pages/landingPage/landing-page';
 import { LoginPage } from '@/pages/login/login-page';
 import { RegisterPage } from '@/pages/register/register-page';
 import { createBrowserRouter } from 'react-router-dom';
@@ -7,7 +8,7 @@ import { createBrowserRouter } from 'react-router-dom';
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <LandingPage />
+    element: <LandingPageComponent />
   },
   {
     path: '/login',
@@ -21,8 +22,9 @@ export const router = createBrowserRouter([
     path: '/appointments',
     element: (
       <ProtectedPage>
-        <div>appointments</div>
+        <AppointmentsPage />
       </ProtectedPage>
     )
   }
 ]);
+

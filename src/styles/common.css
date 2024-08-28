@@ -1,20 +1,70 @@
 :root {
   --spacer: 1rem;
   --color-error: red;
+  --primary: hsl(221.2, 83.2%, 53.3%);
+  --background: hsl(0, 0%, 100%);
+  --muted: hsl(0, 6%, 90%);
+  --muted-foreground: hsl(0, 0%, 0%);
+  --primary-foreground: hsl(210, 40%, 98%);
+  --border: rgb(229, 231, 235);
 }
+
 svg {
-  height: var(--spacer);
-  width: var(--spacer);
+  height: 2.5rem;
+  width: 2.5rem;
+  color: black;
 }
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+main {
+  padding: 40px 0;
+}
+
 html,
 body {
-  display: flex;
-  flex-direction: column;
   min-height: 100dvh;
   margin: 0;
   font-family: Arial, sans-serif;
-  justify-content: center;
+  scroll-behavior: smooth;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
+  padding: 20px 0;
+  border-top: 1px solid #ddd;
+}
+
+footer p {
+  font-size: 0.8rem;
+  color: #999;
+}
+
+footer nav a {
+  color: #555;
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+a {
+  text-decoration: none;
 }
 
 button,
@@ -24,16 +74,19 @@ input[type='submit'] {
   font-size: var(--spacer);
   cursor: pointer;
 }
+
 input[type='date'] {
   padding: var(--spacer);
   border-radius: 0.6rem;
   border: transparent;
 }
+
 input[type='checkbox'] {
   height: var(--spacer);
   width: var(--spacer);
   cursor: pointer;
 }
+
 .grow {
   flex-grow: 1;
 }
@@ -43,90 +96,181 @@ td {
   text-align: center;
   padding: var(--spacer) 0;
 }
+
 tr {
   border-bottom: 1px solid;
 }
+
 table {
   border-collapse: collapse;
 }
+
 .flex {
   display: flex;
 }
+
 .flex-col {
   flex-direction: column;
 }
+
 .flex-row {
   flex-direction: row;
 }
+
 .items-center {
   align-items: center;
+}
+
+.items-start {
+  align-items: flex-start
+}
+
+.text-center {
+  text-align: center;
 }
 
 .justify-center {
   justify-content: center;
 }
+
 .justify-end {
   justify-content: end;
 }
+
 .justify-between {
-  justify-content: between;
+  justify-content: space-between;
 }
 
 .px-1 {
   padding-right: calc(var(--spacer) * 0.25);
   padding-left: calc(var(--spacer) * 0.25);
 }
+
 .px-2 {
   padding-right: calc(var(--spacer) * 0.5);
   padding-left: calc(var(--spacer) * 0.5);
 }
+
 .px-3 {
   padding-right: calc(var(--spacer) * 0.75);
   padding-left: calc(var(--spacer) * 0.75);
 }
+
 .px-4 {
   padding-right: calc(var(--spacer));
   padding-left: calc(var(--spacer));
 }
+
 .px-5 {
   padding-right: calc(var(--spacer) * 1.25);
   padding-left: calc(var(--spacer) * 1.25);
 }
+
+.px-6 {
+  padding-right: calc(var(--spacer) * 1.50);
+  padding-left: calc(var(--spacer) * 1.50);
+}
+
+.px-7 {
+  padding-right: calc(var(--spacer) * 1.75);
+  padding-left: calc(var(--spacer) * 1.75);
+}
+
+.px-8 {
+  padding-right: calc(var(--spacer) * 2);
+  padding-left: calc(var(--spacer) * 2);
+}
+
+.px-9 {
+  padding-right: calc(var(--spacer) * 2.25);
+  padding-left: calc(var(--spacer) * 2.25);
+}
+
+.px-10 {
+  padding-right: calc(var(--spacer) * 2.50);
+  padding-left: calc(var(--spacer) * 2.50);
+}
+
 .py-1 {
   padding-top: calc(var(--spacer) * 0.25);
   padding-bottom: calc(var(--spacer) * 0.25);
 }
+
 .py-2 {
   padding-top: calc(var(--spacer) * 0.5);
   padding-bottom: calc(var(--spacer) * 0.5);
 }
+
 .py-3 {
   padding-top: calc(var(--spacer) * 0.75);
   padding-bottom: calc(var(--spacer) * 0.75);
 }
+
 .py-4 {
   padding-top: calc(var(--spacer));
   padding-bottom: calc(var(--spacer));
 }
+
 .py-5 {
   padding-top: calc(var(--spacer) * 1.25);
   padding-bottom: calc(var(--spacer) * 1.25);
 }
+
+.py-6 {
+  padding-top: calc(var(--spacer) * 1.50);
+  padding-bottom: calc(var(--spacer) * 1.50);
+}
+
+.py-7 {
+  padding-top: calc(var(--spacer) * 1.75);
+  padding-bottom: calc(var(--spacer) * 1.75);
+}
+
+.py-8 {
+  padding-top: calc(var(--spacer) * 2);
+  padding-bottom: calc(var(--spacer) * 2);
+}
+
+.py-12 {
+  padding-top: calc(var(--spacer) * 3);
+  padding-bottom: calc(var(--spacer) * 3);
+}
+
+.py-24 {
+  padding-top: calc(var(--spacer) * 6);
+  padding-bottom: calc(var(--spacer) * 6);
+}
+
+.py-32 {
+  padding-top: calc(var(--spacer) * 8);
+  padding-bottom: calc(var(--spacer) * 8);
+}
+
+.py-48 {
+  padding-top: calc(var(--spacer) * 12);
+  padding-bottom: calc(var(--spacer) * 12);
+}
+
 .pt-1 {
   padding-top: calc(var(--spacer) * 2.25);
 }
+
 .p-1 {
   padding: calc(var(--spacer) * 0.25);
 }
+
 .p-2 {
   padding: calc(var(--spacer) * 0.5);
 }
+
 .p-3 {
   padding: calc(var(--spacer) * 0.75);
 }
+
 .p-4 {
   padding: calc(var(--spacer));
 }
+
 .p-5 {
   padding: calc(var(--spacer) * 1.25);
 }
@@ -134,17 +278,25 @@ table {
 .gap-1 {
   gap: calc(var(--spacer) * 0.25);
 }
+
 .gap-2 {
   gap: calc(var(--spacer) * 0.5);
 }
+
 .gap-3 {
   gap: calc(var(--spacer) * 0.75);
 }
+
 .gap-4 {
   gap: calc(var(--spacer) * 1);
 }
+
 .gap-5 {
   gap: calc(var(--spacer) * 1.25);
+}
+
+.gap-6 {
+  gap: calc(var(--spacer) * 1.50);
 }
 
 input {
@@ -153,16 +305,20 @@ input {
   border-radius: 0.25rem;
   width: fit-content;
 }
+
 .error {
   color: var(--color-error);
   padding-bottom: 1.25rem;
 }
+
 .block {
   display: block;
 }
+
 .hidden {
   display: none;
 }
+
 p,
 b,
 span,
@@ -177,20 +333,24 @@ h6 {
   margin: 0;
   padding: 0;
 }
+
 .container {
-  height: 100%;
-  display: flex;
-  flex-grow: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
+
 .items-baseline {
   justify-content: baseline;
 }
+
 .form-box {
   background-color: #ffffff;
   padding: 50px;
   border-radius: 15px;
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
 }
+
 .container.signin {
   text-align: center;
   margin-top: 20px;
@@ -204,7 +364,8 @@ h6 {
 .container.signin a:hover {
   text-decoration: underline;
 }
-input[type='email'] {
+
+input[type="email"] {
   padding: 10px;
   margin-bottom: 10px;
   border: 2px #ffffff solid;
@@ -217,30 +378,131 @@ input[type='email'] {
   padding: 10px;
   margin-bottom: 10px;
   border: 2px #ffffff solid;
-  border-bottom-color: rgb(24, 24, 27);
+  border-bottom-color: var(--primary);
   box-sizing: border-box;
 }
 
-input[type='password']:focus,
-input[type='email']:focus {
-  border-bottom-color: rgb(24, 24, 27);
+input[type="password"]:focus,
+input[type="email"]:focus {
+  border-bottom-color: var(--primary);
   outline: none;
 }
-button[type='submit'] {
-  width: 100%;
-  padding: 10px;
-  background-color: rgb(24, 24, 27);
+
+button[type="submit"] {
+  background-color: var(--primary);
   border: none;
   border-radius: 6px;
   color: white;
   font-size: 16px;
 }
-.border-t-1 {
-  border-top: 1px solid #b8b8b8;
+
+.border-t {
+  border-top: var(--border) solid 0.5px;
 }
+
 .width-auto {
   width: auto;
 }
+
 .font-color-link {
-  color: rgb(110, 110, 119);
+  color: rgb(110, 110, 119)
+}
+
+.primary {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.foreground {
+  color: var(--foreground);
+}
+
+.muted {
+  background-color: var(--muted);
+  color: var(--muted-foreground);
+}
+
+.flow {
+  display: flow;
+}
+
+.reverse {
+  flex-direction: row-reverse;
+}
+
+.space-around {
+  justify-content: space-around;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.reverse-grid {
+  grid-auto-flow: dense;
+}
+
+.inline-flex {
+  display: inline-flex;
+}
+
+img {
+  color: #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.min-h {
+  min-height: 100dvh;
+}
+
+.h-10 {
+  height: 2.5rem;
+}
+
+.h-14 {
+  height: 3.5rem;
+}
+
+.text-xs {
+  font-size: 0.75rem;
+}
+
+.text-sm {
+  font-size: 1rem;
+}
+
+
+.text-xl {
+  font-size: x-large;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.list-none {
+  list-style: none;
+}
+
+.rounded {
+  border-radius: 0.375rem;
+}
+
+.w-full {
+  width: 100%;
+}
+
+
+.text-title {
+  font-size: 2.175rem;
+}
+
+.text-muted-foreground {
+  color: var(--muted-foreground);
+}
+
+.font-bold {
+  font-weight: 700;
 }

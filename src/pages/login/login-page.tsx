@@ -1,6 +1,6 @@
 import '@/styles/common.css';
 import { zodResolver } from '@hookform/resolvers/zod';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../../features/auth/api/auth';
@@ -19,7 +19,7 @@ export const LoginPage: React.FC = () => {
     resolver: zodResolver(LoginFormSchema)
   });
 
-   const onSubmit = async (data: LoginPayload) => {
+  const onSubmit = async (data: LoginPayload) => {
     try {
       await login(data.email, data.password);
       navigate('/dashboard');
@@ -65,16 +65,21 @@ export const LoginPage: React.FC = () => {
               {errors.password.message}
             </span>
           )}
-          {errorMessage && <span id="loginError" className="error">{errorMessage}</span>}
+          {errorMessage && (
+            <span id="loginError" className="error">
+              {errorMessage}
+            </span>
+          )}
         </div>
-        <button type="submit" disabled={isSubmitting}>Sign in</button>
+        <button className="p-4" type="submit" disabled={isSubmitting}>
+          Sign in
+        </button>
         <div className="flex flex-col signin items-center justify-center border-t-1 pt-1">
           <p>
             Don't have an account?{' '}
             <a href="/register" className="font-color-link">
               Register
             </a>
-            .
           </p>
         </div>
       </form>
