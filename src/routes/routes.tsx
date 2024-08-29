@@ -1,3 +1,4 @@
+import { AppointmentForm } from '@/components/appointment-form';
 import { ProtectedPage } from '@/components/protected-page';
 import { AppointmentsPage } from '@/pages/appointments/appointments-page';
 import { LandingPageComponent } from '@/pages/landingPage/landing-page';
@@ -9,6 +10,10 @@ export const router = createBrowserRouter([
   {
     path: '/',
     element: <LandingPageComponent />
+  },
+  {
+    path:'/form',
+    element: <AppointmentForm/>
   },
   {
     path: '/login',

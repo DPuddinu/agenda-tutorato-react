@@ -1,0 +1,61 @@
+import React, { useState } from 'react';
+import '../styles/common.css';
+import './appointmentForm.css';
+
+export const AppointmentForm: React.FC = () => {
+  const [selectedOption, setSelectedOption] = useState('');
+
+  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedOption(event.target.value);
+  };
+  return (
+    <div className="flex flex-col">
+      <header>
+        <h2 id="titleDialog" className="py-3 px-2">
+          Create appointment
+        </h2>
+        <button className="px-4 py-3">x</button>
+      </header>
+      <section>
+        <form id="createForm" className="flex flex-col justify-center gap-4">
+          <div className="flex flex-col justify-center gap-1">
+            <label htmlFor="description" className="py-3 px-4">
+              {' '}
+              Description{' '}
+            </label>
+            <textarea autoFocus id="description" name="description" placeholder="describe your appointment"></textarea>
+            <span id="errorDescription" className="error"></span>
+          </div>
+          <div className="flex flex-date">
+            <div className="flex flex-col gap-2 px-4">
+              <label htmlFor="dueDate">Due Date</label>
+              <input type="datetime-local" id="dueDate" name="dueDate" />
+            </div>
+            <div className="flex flex-col gap-2 px-4 py-2 pt-1">
+              <label htmlFor="category">Category</label>
+              <select name="tag" id="category" value={selectedOption} onChange={handleChange}>
+                <option value="" disabled>
+                  Select an option
+                </option>
+                <option value="job">Job</option>
+                <option value="sport">Sport</option>
+                <option value="hobby">Hobby</option>
+                <option value="gym">Gym</option>
+                <option value="school">School</option>
+              </select>
+              <span id="errorCategory" className="error"></span>
+            </div>
+          </div>
+        </form>
+      </section>
+      <footer className="flex gap-2 justify-center">
+        <input type="submit" className="flex h-10 items-center justify-center primary rounded" placeholder="Submit" />
+        <input
+          type="reset"
+          className="flex h-10 items-center justify-center border-primary rounded"
+          placeholder="Reset"
+        />
+      </footer>
+    </div>
+  );
+};
