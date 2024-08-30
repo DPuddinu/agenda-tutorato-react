@@ -40,9 +40,6 @@ p {
 
 /* Stili per dispositivi piccoli (smartphone)*/
 @media (max-width: 410px) {
-    .flex-row {
-        flex-direction: column;
-    }
 
     #main-div {
         display: flex;
@@ -93,10 +90,6 @@ p {
 
 /* Stili per dispositivi medi (tablet) */
 @media (min-width: 411px) and (max-width: 900px) {
-    .flex-row {
-        flex-direction: column;
-    }
-
     #main-div {
         display: flex;
         flex-direction: column;
