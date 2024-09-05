@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import '../styles/common.css';
 import './appointmentForm.css';
 
 interface Appointment {

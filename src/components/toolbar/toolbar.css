@@ -1,0 +1,46 @@
+@media (max-width: 410px) {
+  button {
+    border-radius: 0.5em;
+    padding: calc(var(--spacer) * 0.5);
+    font-size: x-large;
+  }
+  button::after {
+    content: '+';
+  }
+}
+
+/* Stili per dispositivi medi (tablet) */
+@media (min-width: 411px) and (max-width: 900px) {
+  #nav {
+    padding-right: calc(var(--spacer) * 0.25);
+    padding-left: calc(var(--spacer) * 0.25);
+    padding-top: calc(var(--spacer) * 0.75);
+    padding-bottom: calc(var(--spacer) * 0.75);
+  }
+  #button {
+    border-radius: 0.25em;
+    padding: calc(var(--spacer) * 0.5);
+  }
+  button::after {
+    content: 'Add appointment';
+  }
+}
+
+/* Stili per dispositivi grandi (desktop) */
+@media (min-width: 901px) {
+  #nav {
+    justify-content: space-between;
+    padding-right: calc(var(--spacer) * 5);
+    padding-left: calc(var(--spacer) * 5);
+    padding-top: calc(var(--spacer) * 0.75);
+    padding-bottom: calc(var(--spacer) * 0.75);
+  }
+  #button {
+    border-radius: 0.25em;
+    padding: calc(var(--spacer) * 0.5);
+    font-size: larger;
+  }
+  button::after {
+    content: 'Add appointment';
+  }
+}
