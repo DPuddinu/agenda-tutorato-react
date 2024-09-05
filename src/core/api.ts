@@ -1,3 +1,5 @@
+import fetch, { RequestInit } from 'node-fetch';
+
 export const AUTH_TOKEN = 'auth-token';
 export const BASE_URL = 'http://localhost:3001';
 
@@ -19,6 +21,7 @@ async function fetchWithAuth(path: string, options: RequestInit, withAuth: boole
 
   return fetch(`${BASE_URL}${path}`, { ...options, headers });
 }
+
 export const api = {
   get: async (path: string, withAuth = true) =>
     fetchWithAuth(
