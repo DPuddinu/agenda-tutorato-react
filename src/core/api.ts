@@ -1,5 +1,3 @@
-import fetch, { RequestInit } from 'node-fetch';
-
 export const AUTH_TOKEN = 'auth-token';
 export const BASE_URL = 'http://localhost:3001';
 
