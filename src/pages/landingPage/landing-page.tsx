@@ -1,9 +1,8 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import placeholder from '../../assets/placeholder.svg';
 import './landing.css';
 
-export const LandingPageComponent: React.FC = () => {
+export const LandingPageComponent = () => {
   return (
     <div className="flex flex-col min-h">
       <header className="h-14 flex items-center px-6">
@@ -12,13 +11,13 @@ export const LandingPageComponent: React.FC = () => {
             <CalendarIcon />
           </Link>
           <div className="flex justify-end grow gap-6 items-center">
-            <a href="#features" className="text-sm font-medium ">
+            <a href="#features" className="text-sm font-medium">
               Features
             </a>
-            <a href="#about_us" className="text-sm font-medium  ">
+            <a href="#about_us" className="text-sm font-medium">
               About
             </a>
-            <a href="#contact" className="text-sm font-medium  ">
+            <a href="#contact" className="text-sm font-medium">
               Contact
             </a>
           </div>
@@ -41,7 +40,7 @@ export const LandingPageComponent: React.FC = () => {
                   </Link>
                   <Link
                     to="/login"
-                    className="inline-flex h-10 items-center justify-center border-primary rounded px-8 ">
+                    className="inline-flex h-10 items-center justify-center border-primary rounded px-8">
                     Sign In
                   </Link>
                 </div>

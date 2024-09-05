@@ -1,0 +1,23 @@
+
+.spinner {
+  border-radius: 100%;
+  width: 2rem;
+  height: 2rem;
+  padding: 5px;
+  background: var(--primary);
+  mask:
+    conic-gradient(#0000, #000) subtract,
+    linear-gradient(#000 0 0) content-box;
+  box-sizing: border-box;
+  mask-composite: subtract;
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
