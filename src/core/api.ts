@@ -37,7 +37,7 @@ export const api = {
       path,
       {
         method: 'POST',
-        body: body ? JSON.stringify(body) : undefined
+        body: JSON.stringify(body)
       },
       withAuth
     ),
@@ -47,7 +47,7 @@ export const api = {
       path,
       {
         method: 'PUT',
-        body: body ? JSON.stringify(body) : undefined
+        body: JSON.stringify(body)
       },
       withAuth
     ),
@@ -57,7 +57,7 @@ export const api = {
       path,
       {
         method: 'PATCH',
-        body: body ? JSON.stringify(body) : undefined
+        body: JSON.stringify(body)
       },
       withAuth
     ),
