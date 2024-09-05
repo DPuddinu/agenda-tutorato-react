@@ -1,4 +1,3 @@
-import '@/styles/common.css';
 import { zodResolver } from '@hookform/resolvers/zod';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -34,32 +33,25 @@ export const LoginPage: React.FC = () => {
 
   return (
     <div className="container form-box">
-      <form id="loginForm" className="flex-col gap-5" onSubmit={handleSubmit(onSubmit)}>
+      <form id="loginForm" className="flex flex-col gap-5" onSubmit={handleSubmit(onSubmit)}>
         <h2>Login</h2>
         <p className="py-5">Enter your email and password to access your account.</p>
-        <div className="flex flex-col items-baseline gap-2">
+        <div className="flex flex-col gap-2">
           <label htmlFor="email">
             <b>Email</b>
           </label>
-          <input
-            required
-            id="email"
-            type="email"
-            placeholder="example@email.com"
-            className="width-auto"
-            {...register('email')}
-          />
+          <input required id="email" type="email" placeholder="example@email.com" {...register('email')} />
           {errors.email && (
             <span id="errorUser" className="error">
               {errors.email.message}
             </span>
           )}
         </div>
-        <div className="flex flex-col items-baseline gap-2">
+        <div className="flex flex-col gap-2">
           <label htmlFor="password" className="flex gap-2">
             <b>Password</b>
           </label>
-          <input required id="password" type="password" className="width-auto" {...register('password')} />
+          <input required id="password" type="password" {...register('password')} />
           {errors.password && (
             <span id="errorPass" className="error">
               {errors.password.message}
@@ -71,14 +63,14 @@ export const LoginPage: React.FC = () => {
             </span>
           )}
         </div>
-        <button className="p-4" type="submit" disabled={isSubmitting}>
+        <button type="submit" disabled={isSubmitting}>
           Sign in
         </button>
-        <div className="flex flex-col signin items-center justify-center border-t-1 pt-1">
-          <p>
+        <div className="pt-1 ">
+          <p className="text-sm">
             Don't have an account?{' '}
             <a href="/register" className="font-color-link">
-              Register
+              <b>Register</b>
             </a>
           </p>
         </div>
