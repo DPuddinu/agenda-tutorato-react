@@ -505,3 +505,8 @@ img {
 .font-bold {
   font-weight: 700;
 }
+
+.icon {
+  height: 1.5rem;
+  width: 1.5rem;
+}
