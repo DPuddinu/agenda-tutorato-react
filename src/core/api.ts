@@ -1,3 +1,5 @@
+import fetch, { RequestInit } from 'node-fetch';
+
 export const AUTH_TOKEN = 'auth-token';
 export const BASE_URL = 'http://localhost:3001';
 
@@ -19,6 +21,7 @@ async function fetchWithAuth(path: string, options: RequestInit, withAuth: boole
 
   return fetch(`${BASE_URL}${path}`, { ...options, headers });
 }
+
 export const api = {
   get: async (path: string, withAuth = true) =>
     fetchWithAuth(
@@ -34,7 +37,7 @@ export const api = {
       path,
       {
         method: 'POST',
-        body: JSON.stringify(body)
+        body: body ? JSON.stringify(body) : undefined
       },
       withAuth
     ),
@@ -44,7 +47,7 @@ export const api = {
       path,
       {
         method: 'PUT',
-        body: JSON.stringify(body)
+        body: body ? JSON.stringify(body) : undefined
       },
       withAuth
     ),
@@ -54,7 +57,7 @@ export const api = {
       path,
       {
         method: 'PATCH',
-        body: JSON.stringify(body)
+        body: body ? JSON.stringify(body) : undefined
       },
       withAuth
     ),
