@@ -1,0 +1,39 @@
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+}
+
+.spinner {
+  border-radius: 10em;
+  width: 5em;
+  height: 5em;
+  padding: 15px;
+  background: var(--primary);
+  mask:
+  conic-gradient(#0000, #000) subtract,
+  linear-gradient(#000 0 0)
+  content-box;
+  box-sizing: border-box;
+  mask-composite: subtract;
+  animation: spin 1.5s linear infinite;
+
+  /* border: 8px solid #979798;
+  border-top: 8px solid var(--primary);
+  border-left: 8px solid var(--primary);
+  border-right: 8px solid var(--primary); */
+}
+
+
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

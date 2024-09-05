@@ -4,11 +4,16 @@ import { LandingPageComponent } from '@/pages/landingPage/landing-page';
 import { LoginPage } from '@/pages/login/login-page';
 import { RegisterPage } from '@/pages/register/register-page';
 import { createBrowserRouter } from 'react-router-dom';
+import { Prova } from '@/pages/prova';
 
 export const router = createBrowserRouter([
   {
     path: '/',
     element: <LandingPageComponent />
+  },
+  {
+    path: '/prova',
+    element: <Prova />
   },
   {
     path: '/login',
