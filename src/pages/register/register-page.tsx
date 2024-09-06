@@ -19,8 +19,12 @@ export const RegisterPage: React.FC = () => {
 
   const onSubmit = async (data: RegisterPayload) => {
     try {
-      await registerUser(data.email, data.password, data.confirmPassword);
-      navigate('/dashboard');
+      const res = await registerUser(data);
+      if (res.status === 'success') {
+        navigate('/dashboard');
+      } else {
+        setErrorMessage('Something went wrong!');
+      }
     } catch (error: unknown) {
       if (error instanceof Error) {
         setErrorMessage(error.message);

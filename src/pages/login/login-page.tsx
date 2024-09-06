@@ -20,8 +20,12 @@ export const LoginPage: React.FC = () => {
 
   const onSubmit = async (data: LoginPayload) => {
     try {
-      await login(data.email, data.password);
-      navigate('/dashboard');
+      const res = await login(data);
+      if(res.status === 'success') {
+        navigate('/dashboard');
+      } else {
+        setErrorMessage('Something went wrong!');
+      }
     } catch (error: unknown) {
       if (error instanceof Error) {
         setErrorMessage(error.message);

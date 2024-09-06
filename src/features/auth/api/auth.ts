@@ -1,39 +1,41 @@
-import { api } from '@/core/api';
+import { api, AUTH_TOKEN } from '@/core/api';
+import { LoginPayload, RegisterPayload } from '../types/auth.types';
 
-export async function login(username: string, password: string) {
-  const response = await api.post(
-    '/auth/login',
-    {
-      method: 'POST',
-      body: JSON.stringify({ username, password }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    },
-    false
-  );
+export async function login(data: LoginPayload) {
+  const response = await api.post('/auth/login', data, false);
 
   if (!response.ok) {
     throw new Error('Login failed!');
   }
-  return await response.json();
+  const res = await response.json();
+  if (res.token) {
+    sessionStorage.setItem(AUTH_TOKEN, res.token);
+    return {
+      status: 'success'
+    };
+  } else {
+    return {
+      status: 'error'
+    };
+  }
 }
 
-export async function register(username: string, password: string, confirm: string) {
-  const response = await api.post(
-    '/auth/register',
-    {
-      method: 'POST',
-      body: JSON.stringify({ username, password, confirm }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    },
-    false
-  );
+export async function register(data: RegisterPayload) {
+  const response = await api.post('/auth/register', data, false);
 
   if (!response.ok) {
     throw new Error('Register failed!');
   }
-  return await response.json();
+  const res = await response.json();
+
+  if (res.token) {
+    sessionStorage.setItem(AUTH_TOKEN, res.token);
+    return {
+      status: 'success'
+    };
+  } else {
+    return {
+      status: 'error'
+    };
+  }
 }

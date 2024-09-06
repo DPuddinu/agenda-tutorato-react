@@ -19,7 +19,7 @@ export const router = createBrowserRouter([
     element: <RegisterPage />
   },
   {
-    path: '/appointments',
+    path: '/dashboard',
     element: (
       <ProtectedPage>
         <AppointmentsPage />
