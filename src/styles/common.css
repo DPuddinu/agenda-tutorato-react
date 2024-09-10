@@ -385,6 +385,7 @@ h6 {
 }
 
 input[type='password'],
+input[type='text'],
 input[type='email'] {
   padding: 10px;
   border: 1px solid lightgray;
@@ -502,4 +503,10 @@ img {
 .icon {
   height: 1.5rem;
   width: 1.5rem;
+}
+.w-min {
+  width: min-content;
+}
+.w-fit {
+  width: fit-content;
 }

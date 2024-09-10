@@ -1,3 +1,4 @@
+import { PasswordInput } from '@/components/password-input/password-input.tsx';
 import { zodResolver } from '@hookform/resolvers/zod';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -21,7 +22,7 @@ export const LoginPage: React.FC = () => {
   const onSubmit = async (data: LoginPayload) => {
     try {
       const res = await login(data);
-      if(res.status === 'success') {
+      if (res.status === 'success') {
         navigate('/dashboard');
       } else {
         setErrorMessage('Something went wrong!');
@@ -40,42 +41,48 @@ export const LoginPage: React.FC = () => {
       <form id="loginForm" className="flex flex-col gap-5" onSubmit={handleSubmit(onSubmit)}>
         <h2>Login</h2>
         <p className="py-5">Enter your email and password to access your account.</p>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="email">
-            <b>Email</b>
-          </label>
-          <input required id="email" type="email" placeholder="example@email.com" {...register('email')} />
-          {errors.email && (
-            <span id="errorUser" className="error">
-              {errors.email.message}
-            </span>
-          )}
+        <div className="w-fit flex flex-col gap-4">
+          <div className="flex flex-col gap-2">
+            <label htmlFor="email">
+              <b>Email</b>
+            </label>
+            <input
+              className="w-auto"
+              required
+              id="email"
+              type="email"
+              placeholder="example@email.com"
+              {...register('email')}
+            />
+            {errors.email && (
+              <span id="errorUser" className="error">
+                {errors.email.message}
+              </span>
+            )}
+          </div>
+          <div className="flex flex-col gap-2">
+            <label htmlFor="password" className="flex gap-2">
+              <b>Password</b>
+            </label>
+            <PasswordInput {...register('password')} />
+            {errorMessage && (
+              <span id="loginError" className="error">
+                {errorMessage}
+              </span>
+            )}
+          </div>
         </div>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="password" className="flex gap-2">
-            <b>Password</b>
-          </label>
-          <input required id="password" type="password" {...register('password')} />
-          {errors.password && (
-            <span id="errorPass" className="error">
-              {errors.password.message}
-            </span>
-          )}
-          {errorMessage && (
-            <span id="loginError" className="error">
-              {errorMessage}
-            </span>
-          )}
-        </div>
+
         <button type="submit" disabled={isSubmitting}>
           Sign in
         </button>
-        <div className="pt-1 ">
-          <p className="text-sm">
+        <div className="flex flex-col signin items-center justify-center border-t-1 pt-1">
+          <p>
             Don't have an account?{' '}
             <a href="/register" className="font-color-link">
-              <b>Register</b>
+              Register
             </a>
+            .
           </p>
         </div>
       </form>

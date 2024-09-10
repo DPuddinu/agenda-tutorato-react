@@ -1,3 +1,4 @@
+import { PasswordInput } from '@/components/password-input/password-input';
 import { RegisterFormSchema, RegisterPayload } from '@/features/auth/types/auth.types';
 import { zodResolver } from '@hookform/resolvers/zod';
 import React, { useState } from 'react';
@@ -39,40 +40,50 @@ export const RegisterPage: React.FC = () => {
       <form id="registerForm" className="flex flex-col gap-2" onSubmit={handleSubmit(onSubmit)}>
         <h2>Register</h2>
         <p className="py-5">Enter your email and password to create your account.</p>
-        <div className="flex flex-col items-baseline gap-2">
-          <label htmlFor="email">
-            <strong>Email</strong>
-          </label>
-          <input required id="email" type="email" placeholder="example@email.com" {...register('email')} />
-          {errors.email && (
-            <span id="errorUser" className="error">
-              {errors.email.message}
-            </span>
-          )}
+        <div className="w-fit flex flex-col gap-4">
+          <div className="flex flex-col items-baseline gap-2">
+            <label htmlFor="email">
+              <strong>Email</strong>
+            </label>
+            <input
+              className="w-auto"
+              required
+              id="email"
+              type="email"
+              placeholder="example@email.com"
+              {...register('email')}
+            />
+            {errors.email && (
+              <span id="errorUser" className="error">
+                {errors.email.message}
+              </span>
+            )}
+          </div>
+          <div className="flex flex-col gap-2">
+            <label htmlFor="password" className="flex gap-2">
+              <b>Password</b>
+            </label>
+            <PasswordInput {...register('password')} />
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <label htmlFor="confirmPassword">
+              <strong>Confirm Password</strong>
+            </label>
+            {errors.password && (
+              <span id="errorPass" className="error">
+                {errors.password.message}
+              </span>
+            )}
+            <PasswordInput {...register('confirmPassword')} />
+            {errors.confirmPassword && (
+              <span id="errorConfirmPass" className="error">
+                {errors.confirmPassword.message}
+              </span>
+            )}
+          </div>
         </div>
-        <div className="flex flex-col items-baseline gap-2">
-          <label htmlFor="password">
-            <strong>Password</strong>
-          </label>
-          <input required id="password" type="password" {...register('password')} />
-          {errors.password && (
-            <span id="errorPass" className="error">
-              {errors.password.message}
-            </span>
-          )}
-        </div>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="confirmPassword">
-            <strong>Confirm Password</strong>
-          </label>
-          <input required id="confirmPassword" type="password" {...register('confirmPassword')} />
-          {errors.confirmPassword && (
-            <span id="errorConfirmPass" className="error">
-              {errors.confirmPassword.message}
-            </span>
-          )}
-        </div>
-        <div className='pt-1'>
+        <div className="pt-1">
           {errorMessage && (
             <span id="registerError" className="error">
               {errorMessage}
