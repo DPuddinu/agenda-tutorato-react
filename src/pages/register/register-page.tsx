@@ -1,3 +1,4 @@
+import { InputComponent } from '@/components/input-component/input-component';
 import { PasswordInput } from '@/components/password-input/password-input';
 import { RegisterFormSchema, RegisterPayload } from '@/features/auth/types/auth.types';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -45,8 +46,8 @@ export const RegisterPage: React.FC = () => {
             <label htmlFor="email">
               <strong>Email</strong>
             </label>
-            <input
-              className="w-auto"
+            <InputComponent
+              variant="primary"
               required
               id="email"
               type="email"
