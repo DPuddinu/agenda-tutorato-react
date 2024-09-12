@@ -348,6 +348,7 @@ h2,
 h3,
 h4,
 h5,
+textarea,
 h6 {
   margin: 0;
   padding: 0;
@@ -362,7 +363,7 @@ h6 {
     text-align: center;
 
     a {
-      color: #0092b9;
+      color: var(--primary);
       text-decoration: none;
     }
 

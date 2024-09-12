@@ -1,12 +1,9 @@
-export const AUTH_TOKEN = 'auth-token';
-export const BASE_URL = 'http://localhost:3001';
-
 export const commonHeaders = {
   'Content-Type': 'application/json'
 };
 
 export function getToken() {
-  const token = sessionStorage.getItem(AUTH_TOKEN);
+  const token = sessionStorage.getItem(import.meta.env.VITE_AUTH_TOKEN);
   return token ? { Authorization: `Bearer ${token}` } : undefined;
 }
 
@@ -16,8 +13,7 @@ async function fetchWithAuth(path: string, options: RequestInit, withAuth: boole
     ...commonHeaders,
     ...options.headers
   };
-
-  return fetch(`${BASE_URL}${path}`, { ...options, headers });
+  return fetch(`${import.meta.env.VITE_BASE_DB_URL}${path}`, { ...options, headers });
 }
 
 export const api = {

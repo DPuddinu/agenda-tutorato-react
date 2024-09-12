@@ -3,6 +3,19 @@ p {
   color: #777;
 }
 
+.primary {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.border-primary {
+
+  border: var(--primary) solid 1px;
+  color: var(--primary);
+  background-color: var(--primary-foreground);
+}
+
+
 /* Stili per dispositivi piccoli (smartphone)*/
 @media (max-width: 410px) {
   #main-div {

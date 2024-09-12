@@ -1,4 +1,4 @@
-import { api, AUTH_TOKEN } from '@/core/api';
+import { api } from '@/core/api';
 import { LoginPayload, RegisterPayload } from '../types/auth.types';
 
 export async function login(data: LoginPayload) {
@@ -9,7 +9,7 @@ export async function login(data: LoginPayload) {
   }
   const res = await response.json();
   if (res.token) {
-    sessionStorage.setItem(AUTH_TOKEN, res.token);
+    sessionStorage.setItem(import.meta.env.VITE_AUTH_TOKEN, res.token);
     return {
       status: 'success'
     };
@@ -29,7 +29,7 @@ export async function register(data: RegisterPayload) {
   const res = await response.json();
 
   if (res.token) {
-    sessionStorage.setItem(AUTH_TOKEN, res.token);
+    sessionStorage.setItem(import.meta.env.VITE_AUTH_TOKEN, res.token);
     return {
       status: 'success'
     };
