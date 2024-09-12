@@ -104,11 +104,6 @@ input[type='checkbox'] {
   flex-grow: 1;
 }
 
-.border-primary {
-  border: var(--primary) solid 1px;
-  color: var(--primary);
-}
-
 th,
 td {
   text-align: center;
@@ -398,11 +393,6 @@ h6 {
 
 .font-color-link {
   color: rgb(110, 110, 119);
-}
-
-.primary {
-  background-color: var(--primary);
-  color: var(--primary-foreground);
 }
 
 .foreground {

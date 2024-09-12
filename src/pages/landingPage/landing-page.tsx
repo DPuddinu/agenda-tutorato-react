@@ -1,7 +1,7 @@
+import { InputComponent } from '@/components/input-component/input-component';
 import { Link } from 'react-router-dom';
 import placeholder from '../../assets/placeholder.svg';
 import './landing.css';
-import { InputComponent } from '@/components/input-component/input-component';
 
 export const LandingPageComponent = () => {
   return (
@@ -36,12 +36,10 @@ export const LandingPageComponent = () => {
                   </p>
                 </div>
                 <div className="gap-3 flex flex-row py-3">
-                  <Link to="/register" className="inline-flex h-10 items-center justify-center primary rounded px-8">
+                  <Link to="/register" className="inline-flex h-10 items-center justify-center rounded px-8">
                     Sign Up
                   </Link>
-                  <Link
-                    to="/login"
-                    className="inline-flex h-10 items-center justify-center border-primary rounded px-8">
+                  <Link to="/login" className="inline-flex h-10 items-center justify-center rounded px-8">
                     Sign In
                   </Link>
                 </div>
@@ -108,7 +106,7 @@ export const LandingPageComponent = () => {
               </p>
             </div>
             <div className="flex justify-center py-6 gap-2">
-              <Link to="#" className="inline-flex h-10 items-center justify-center border-primary rounded px-8 ">
+              <Link to="#" className="inline-flex h-10 items-center justify-center rounded px-8 ">
                 Learn More
               </Link>
             </div>
@@ -124,8 +122,8 @@ export const LandingPageComponent = () => {
             </div>
             <div className="flex flex-col items-center w-full">
               <form className="gap-4">
-                <InputComponent variant='primary' type="email" placeholder="Enter your email" />
-                <button className="inline-flex h-10 items-center justify-center primary rounded px-8" type="submit">
+                <InputComponent variant="primary" type="email" placeholder="Enter your email" />
+                <button className="inline-flex h-10 items-center justify-center rounded px-8" type="submit">
                   Sign Up
                 </button>
               </form>

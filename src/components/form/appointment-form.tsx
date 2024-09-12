@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './appointmentForm.css';
 import { InputComponent } from '../input-component/input-component';
+import './appointmentForm.css';
 
 interface Appointment {
   description?: string;
@@ -73,7 +73,14 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({ appointment, o
           <div className="flex flex-date">
             <div className="flex flex-col gap-2 px-4">
               <label htmlFor="dueDate">Due Date</label>
-              <InputComponent variant='primary' type="datetime-local" id="dueDate" name="dueDate" value={dueDate} onChange={handleDueDateChange} />
+              <InputComponent
+                variant="primary"
+                type="datetime-local"
+                id="dueDate"
+                name="dueDate"
+                value={dueDate}
+                onChange={handleDueDateChange}
+              />
             </div>
             <div className="flex flex-col gap-2 px-4 py-2 pt-1">
               <label htmlFor="category">Category</label>
@@ -93,8 +100,18 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({ appointment, o
         </form>
       </section>
       <footer className="flex gap-2 justify-center">
-       < InputComponent variant='primary' type="submit" className="flex h-10 items-center justify-center primary rounded" value="Submit" />
-        <InputComponent variant='primary' type="reset" className="flex h-10 items-center justify-center border-primary rounded" value="Reset" />
+        <InputComponent
+          variant="primary"
+          type="submit"
+          className="flex h-10 items-center justify-center rounded"
+          value="Submit"
+        />
+        <InputComponent
+          variant="primary"
+          type="reset"
+          className="flex h-10 items-center justify-center rounded"
+          value="Reset"
+        />
       </footer>
     </div>
   );
