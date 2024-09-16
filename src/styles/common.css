@@ -1,7 +1,8 @@
 :root {
   --spacer: 1rem;
   --color-error: red;
-  --primary: hsl(221.2, 83.2%, 53.3%);
+  --primary: #2563eb;
+  --secondary: #eac435;
   --background: hsl(0, 0%, 100%);
   --muted: hsl(0, 6%, 90%);
   --muted-foreground: hsl(0, 0%, 0%);
@@ -77,9 +78,11 @@ input[type='submit'] {
   color: var(--primary-foreground);
   border: none;
   cursor: pointer;
+
   &:hover {
-    box-shadow: 3px 3px 3px rgba(36, 36, 36, 0.3); 
+    box-shadow: 3px 3px 3px rgba(36, 36, 36, 0.3);
   }
+
   transition: box-shadow 0.3s ease-in-out;
   font-size: 1rem;
   width: fit-content;
@@ -99,10 +102,6 @@ input[type='checkbox'] {
 
 .grow {
   flex-grow: 1;
-}
-.border-primary {
-  border: var(--primary) solid 1px;
-  color: var(--primary);
 }
 
 th,
@@ -325,7 +324,6 @@ input {
   margin: 0;
   padding: 0.25rem;
   border-radius: var(--border-radius);
-  width: fit-content;
 }
 
 .error {
@@ -350,6 +348,7 @@ h2,
 h3,
 h4,
 h5,
+textarea,
 h6 {
   margin: 0;
   padding: 0;
@@ -362,8 +361,9 @@ h6 {
 
   .signin {
     text-align: center;
+
     a {
-      color: #0092b9;
+      color: var(--primary);
       text-decoration: none;
     }
 
@@ -384,13 +384,6 @@ h6 {
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
 }
 
-input[type='password'],
-input[type='text'],
-input[type='email'] {
-  padding: 10px;
-  border: 1px solid lightgray;
-}
-
 .border-t {
   border-top: var(--border) solid 0.5px;
 }
@@ -401,11 +394,6 @@ input[type='email'] {
 
 .font-color-link {
   color: rgb(110, 110, 119);
-}
-
-.primary {
-  background-color: var(--primary);
-  color: var(--primary-foreground);
 }
 
 .foreground {
@@ -504,9 +492,11 @@ img {
   height: 1.5rem;
   width: 1.5rem;
 }
+
 .w-min {
   width: min-content;
 }
+
 .w-fit {
   width: fit-content;
 }

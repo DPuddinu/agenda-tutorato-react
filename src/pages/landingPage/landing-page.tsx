@@ -1,3 +1,4 @@
+import { InputComponent } from '@/components/input-component/input-component';
 import { Link } from 'react-router-dom';
 import placeholder from '../../assets/placeholder.svg';
 import './landing.css';
@@ -123,8 +124,8 @@ export const LandingPageComponent = () => {
             </div>
             <div className="flex flex-col items-center w-full">
               <form className="gap-4">
-                <input type="email" placeholder="Enter your email" />
-                <button className="inline-flex h-10 items-center justify-center primary rounded px-8" type="submit">
+                <InputComponent variant="primary" type="email" placeholder="Enter your email" />
+                <button className="inline-flex h-10 items-center justify-center rounded px-8" type="submit">
                   Sign Up
                 </button>
               </form>

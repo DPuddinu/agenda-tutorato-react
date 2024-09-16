@@ -1,3 +1,4 @@
+import { InputComponent } from '@/components/input-component/input-component.tsx';
 import { PasswordInput } from '@/components/password-input/password-input.tsx';
 import { zodResolver } from '@hookform/resolvers/zod';
 import React, { useState } from 'react';
@@ -46,8 +47,8 @@ export const LoginPage: React.FC = () => {
             <label htmlFor="email">
               <b>Email</b>
             </label>
-            <input
-              className="w-auto"
+            <InputComponent
+              variant="primary"
               required
               id="email"
               type="email"
