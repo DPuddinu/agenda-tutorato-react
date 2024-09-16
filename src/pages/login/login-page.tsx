@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import Button from '../../components/button/button.tsx';
 import { login } from '../../features/auth/api/auth';
 import { LoginFormSchema, LoginPayload } from '../../features/auth/types/auth.types.ts';
 import './login.css';
@@ -73,10 +74,9 @@ export const LoginPage: React.FC = () => {
             )}
           </div>
         </div>
-
-        <button type="submit" disabled={isSubmitting}>
+        <Button variant="primary" type="submit" disabled={isSubmitting}>
           Sign in
-        </button>
+        </Button>
         <div className="flex flex-col signin items-center justify-center border-t-1 pt-1">
           <p>
             Don't have an account?{' '}
