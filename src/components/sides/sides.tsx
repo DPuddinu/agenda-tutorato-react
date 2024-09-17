@@ -1,8 +1,7 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import '../sides/sides.css';
 
-const Sides: React.FC = ({}) => {
+const Sides = () => {
   return (
     <div className="flex flex-col text-center justify-between min-h" id="mainSides">
       <div className="flex flex-col">

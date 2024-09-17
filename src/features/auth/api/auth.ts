@@ -3,7 +3,6 @@ import { LoginPayload, RegisterPayload } from '../types/auth.types';
 
 export async function login(data: LoginPayload) {
   const response = await api.post('/auth/login', data, false);
-
   if (!response.ok) {
     throw new Error('Login failed!');
   }
