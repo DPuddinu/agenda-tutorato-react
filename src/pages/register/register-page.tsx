@@ -2,12 +2,12 @@ import { InputComponent } from '@/components/input-component/input-component';
 import { PasswordInput } from '@/components/password-input/password-input';
 import { RegisterFormSchema, RegisterPayload } from '@/features/auth/types/auth.types';
 import { zodResolver } from '@hookform/resolvers/zod';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { register as registerUser } from '../../features/auth/api/auth';
 
-export const RegisterPage: React.FC = () => {
+export const RegisterPage = () => {
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 

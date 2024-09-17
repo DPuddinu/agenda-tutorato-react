@@ -1,18 +1,8 @@
 import { api } from '@/core/api';
+import { Appointment, AppointmentSchema } from '@/models/appointment';
 import { z } from 'zod';
 
-const appointmentSchema = z.object({
-  description: z.string().min(1, 'Description is required'),
-  creationDate: z.string(),
-  updateDate: z.string(),
-  dueDate: z.string().optional().nullable(),
-  categoryId: z.number().int().optional(),
-  authorId: z.number().int().optional()
-});
-
-type AppointmentData = z.infer<typeof appointmentSchema>;
-
-export async function createAppointment(appointmentData: AppointmentData) {
+export async function createAppointment(appointmentData: Appointment) {
   const response = await api.post('/appointments', appointmentData);
 
   if (!response.ok) {
@@ -33,7 +23,15 @@ export async function getAppointments() {
       message: 'Failed to fetch appointments'
     };
   }
-  return await response.json();
+  const data = await response.json();
+  const schema = z.object({
+    data: AppointmentSchema.array(),
+    page: z.number(),
+    total: z.number(),
+    limit: z.number()
+  });
+
+  return schema.parse(data);
 }
 
 export async function getAppointmentById(appointmentId: string) {
@@ -48,7 +46,7 @@ export async function getAppointmentById(appointmentId: string) {
   return await response.json();
 }
 
-export async function updateAppointment(appointmentId: string, updatedData: AppointmentData) {
+export async function updateAppointment(appointmentId: string, updatedData: Appointment) {
   const response = await api.put(`/appointments/${appointmentId}`, updatedData);
 
   if (!response.ok) {

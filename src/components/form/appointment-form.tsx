@@ -9,7 +9,6 @@ interface Props {
 }
 
 export const AppointmentForm = ({ appointment }: Props) => {
-  
   const {
     register,
     reset,
@@ -18,6 +17,11 @@ export const AppointmentForm = ({ appointment }: Props) => {
   } = useForm<AppointmentPayload>({
     resolver: zodResolver(AppointmentPayloadSchema),
     defaultValues: appointment
+      ? {
+          ...appointment,
+          dueDate: appointment.dueDate || undefined
+        }
+      : undefined
   });
 
   return (
@@ -32,25 +36,27 @@ export const AppointmentForm = ({ appointment }: Props) => {
         <label htmlFor="description" className="py-3 ">
           Description
         </label>
-        <textarea
-          {...register('description')}
-          autoFocus
-          placeholder="Describe your appointment"></textarea>
+        <textarea {...register('description')} autoFocus placeholder="Describe your appointment"></textarea>
         {errors.description && <span className="error">{errors.description.message}</span>}
       </div>
       <div className="flex flex-date">
         <div className="flex flex-col gap-2 ">
           <label htmlFor="dueDate">Due Date</label>
-          <InputComponent {...register('dueDate', {
-            valueAsDate: true
-          })} variant="primary" type="datetime-local" />
+          <InputComponent
+            {...register('dueDate', {
+              valueAsDate: true
+            })}
+            variant="primary"
+            type="datetime-local"
+          />
           {errors.dueDate && <span className="error">{errors.dueDate.message}</span>}
         </div>
         <div className="flex flex-col gap-2  py-2 pt-1">
           <label htmlFor="category">Category</label>
-          <select {...register('categoryId', {
-            valueAsNumber: true
-          })}>
+          <select
+            {...register('categoryId', {
+              valueAsNumber: true
+            })}>
             <option value="" disabled>
               Select an option
             </option>
@@ -61,7 +67,7 @@ export const AppointmentForm = ({ appointment }: Props) => {
             <option value="5">School</option>
           </select>
           {errors.categoryId && <span className="error">{errors.categoryId.message}</span>}
-          <div className='flex gap-2'>
+          <div className="flex gap-2">
             <InputComponent
               disabled={isSubmitting}
               variant="primary"

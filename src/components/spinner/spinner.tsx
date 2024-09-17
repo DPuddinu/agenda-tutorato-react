@@ -1,7 +1,10 @@
-import './spinner.css';
+import styles from './spinner.module.css';
 
-const Spinner = () => {
-  return <div className="spinner"></div>;
+type Props = {
+  color?: 'primary' | 'current';
+};
+const Spinner = ({ color = 'primary' }: Props) => {
+  return <div className={`${styles.spinner} ${styles[color]}`} />;
 };
 
 export default Spinner;
