@@ -69,24 +69,7 @@ a {
   text-decoration: none;
 }
 
-button,
-input[type='reset'],
-input[type='submit'] {
-  padding: 0.5rem 0.75rem;
-  border-radius: var(--border-radius);
-  background-color: var(--primary);
-  color: var(--primary-foreground);
-  border: none;
-  cursor: pointer;
 
-  &:hover {
-    box-shadow: 3px 3px 3px rgba(36, 36, 36, 0.3);
-  }
-
-  transition: box-shadow 0.3s ease-in-out;
-  font-size: 1rem;
-  width: fit-content;
-}
 
 input[type='date'] {
   padding: var(--spacer);

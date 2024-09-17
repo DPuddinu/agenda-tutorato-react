@@ -1,6 +1,7 @@
 import { InputComponent } from '@/components/input-component/input-component';
 import { Link } from 'react-router-dom';
 import placeholder from '../../assets/placeholder.svg';
+import Button from '../../components/button/button.tsx';
 import styles from './landing.module.css';
 
 export const LandingPageComponent = () => {
@@ -129,11 +130,12 @@ export const LandingPageComponent = () => {
             <div className="flex flex-col items-center w-full">
               <form className="gap-4">
                 <InputComponent variant="primary" type="email" placeholder="Enter your email" />
-                <button
+                <Button
+                  variant="primary"
                   className={`inline-flex h-10 items-center justify-center rounded px-8 ${styles.primary}`}
                   type="submit">
                   Sign Up
-                </button>
+                </Button>
               </form>
               <p className={`text-xs text-muted-foreground ${styles.p}`}>
                 Sign up to get started.{' '}

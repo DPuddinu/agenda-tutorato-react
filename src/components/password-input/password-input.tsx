@@ -1,6 +1,7 @@
 import { forwardRef, InputHTMLAttributes, useState } from 'react';
 import eyeSlash from '../../assets/icons/eye-slash.svg';
 import eye from '../../assets/icons/eye.svg';
+import Button from '../../components/button/button.tsx';
 import { InputComponent } from '../input-component/input-component';
 import styles from './eye-slash-password.module.css';
 
@@ -19,13 +20,14 @@ export const PasswordInput = forwardRef<Ref, InputProps>((props, ref) => {
         type={showPassword ? 'text' : 'password'}
         {...props}
       />
-      <button
+      <Button
+        variant="primary"
         className={`px-2 ${styles.switchBtn}`}
         id="eye"
         onClick={() => setShowPassword((show) => !show)}
         type="button">
         <img src={showPassword ? eye : eyeSlash} />
-      </button>
+      </Button>
     </div>
   );
 });
