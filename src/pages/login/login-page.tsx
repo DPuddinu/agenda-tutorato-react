@@ -5,6 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import Button from '../../components/button/button.tsx';
 import { login } from '../../features/auth/api/auth';
 import { LoginFormSchema, LoginPayload } from '../../features/auth/types/auth.types.ts';
 
@@ -66,10 +67,9 @@ export const LoginPage = () => {
             )}
           </div>
         </div>
-
-        <button type="submit" disabled={isSubmitting || isPending}>
+        <Button variant="primary" type="submit" disabled={isSubmitting || isPending}>
           {isPending ? <Spinner color="current" /> : 'Sign in'}
-        </button>
+        </Button>
         <div className="flex flex-col signin items-center justify-center border-t-1 pt-1">
           <p>
             Don't have an account?{' '}
