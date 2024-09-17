@@ -1,18 +1,18 @@
 /* Stili per dispositivi piccoli (smartphone) */
 @media (max-width: 430px) {
-  h2 {
+  .h2 {
     font-size: 4em;
   }
 
-  nav,
-  a {
+  .nav,
+  .a {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.70em;
   }
 
-  button {
+  .button {
     width: 100%;
     font-size: 1.75em;
     padding: 20px;
@@ -21,19 +21,19 @@
 
 /* Stili per dispositivi medi (tablet) */
 @media (min-width: 431px) and (max-width: 900px) {
-  h2 {
+  .h2 {
     font-size: 5em;
   }
 
-  nav,
-  a {
+  .nav,
+  .a {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.70em;
   }
 
-  button {
+  .button {
     width: 100%;
     font-size: 1.75em;
     padding: 20px;
@@ -42,27 +42,27 @@
 
 /* Stili per dispositivi grandi (desktop) */
 @media (min-width: 901px) {
-  #root{
-    height:100%;
+  .root {
+    height: 100%;
   }
-  #mainSides {
+  .mainSides {
     width: 8em;
     border: solid black 1px;
   }
 
- h2 {
+  .h2 {
     font-size: 2.5em;
   }
 
-  nav,
-  a {
+  .nav,
+  .a {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.05em;
   }
 
-  button {
+  .button {
     width: 100%;
     font-size: 1em;
     padding: 10px;

@@ -6,22 +6,20 @@
     outline: none;
 }
 
-.input.primary {
+.inputPrimary {
     background-color: #ccc;
     color: #000000;
-
 }
 
-.input.primary:focus {
-    border-color: var(--primary)
-}
+/* .inputPrimary:focus {
+    border-color: var(--primary);
+} */
 
-.input.secondary {
+.inputSecondary {
     background-color: #ccc;
     color: #000000;
-
 }
 
-.input.secondary:focus {
+.inputSecondary:focus {
     border-color: var(--secondary);
 }
