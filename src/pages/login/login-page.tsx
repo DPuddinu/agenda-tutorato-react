@@ -1,17 +1,23 @@
 import { InputComponent } from '@/components/input-component/input-component.tsx';
 import { PasswordInput } from '@/components/password-input/password-input.tsx';
+import Spinner from '@/components/spinner/spinner.tsx';
 import { zodResolver } from '@hookform/resolvers/zod';
-import React, { useState } from 'react';
+import { useMutation } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/button/button.tsx';
 import { login } from '../../features/auth/api/auth';
 import { LoginFormSchema, LoginPayload } from '../../features/auth/types/auth.types.ts';
-import './login.css';
 
-export const LoginPage: React.FC = () => {
+export const LoginPage = () => {
   const navigate = useNavigate();
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  const { mutate, isPending, isError } = useMutation({
+    mutationFn: (data: LoginPayload) => login(data),
+    onSuccess: () => {
+      navigate('/dashboard');
+    }
+  });
 
   const {
     register,
@@ -22,20 +28,7 @@ export const LoginPage: React.FC = () => {
   });
 
   const onSubmit = async (data: LoginPayload) => {
-    try {
-      const res = await login(data);
-      if (res.status === 'success') {
-        navigate('/dashboard');
-      } else {
-        setErrorMessage('Something went wrong!');
-      }
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        setErrorMessage(error.message);
-      } else {
-        setErrorMessage('An unexpected error occurred.');
-      }
-    }
+    mutate(data);
   };
 
   return (
@@ -67,15 +60,15 @@ export const LoginPage: React.FC = () => {
               <b>Password</b>
             </label>
             <PasswordInput {...register('password')} />
-            {errorMessage && (
+            {isError && (
               <span id="loginError" className="error">
-                {errorMessage}
+                Something went wrong!
               </span>
             )}
           </div>
         </div>
-        <Button variant="primary" type="submit" disabled={isSubmitting}>
-          Sign in
+        <Button variant="primary" type="submit" disabled={isSubmitting || isPending}>
+          {isPending ? <Spinner color="current" /> : 'Sign in'}
         </Button>
         <div className="flex flex-col signin items-center justify-center border-t-1 pt-1">
           <p>
