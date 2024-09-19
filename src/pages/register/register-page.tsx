@@ -39,8 +39,11 @@ export const RegisterPage = () => {
   };
 
   return (
-    <div className="container form-box">
-      <form id="registerForm" className="flex flex-col gap-2" onSubmit={handleSubmit(onSubmit)}>
+    <div className="container flex justify-center muted items-center grow form-box">
+      <form
+        id="registerForm"
+        className="flex shadow p-5 rounded bg-white flex-col gap-5"
+        onSubmit={handleSubmit(onSubmit)}>
         <h2>Register</h2>
         <p className="py-5">Enter your email and password to create your account.</p>
         <div className="w-fit flex flex-col gap-4">

@@ -26,7 +26,7 @@ export const LandingPageComponent = () => {
         </nav>
       </header>
       <main>
-        <section className={`w-full py-48 ${styles.mainSection}`} id="main-section">
+        <section className={` py-48 px-10  ${styles.mainSection}`} id="main-section">
           <div className={styles.container}>
             <div className={`flex ${styles.mainDiv}`} id="main-div">
               <div className="flex flex-col justify-center">
@@ -58,44 +58,42 @@ export const LandingPageComponent = () => {
         <section className={`flex flex-row py-48 muted ${styles.secondSection}`} id="second-section">
           <div id="features" className="container px-4 px-6">
             <div className="flex flex-col items-center justify-center">
-              <div className="flex flex-col text-center justify-center">
+              <div className="flex flex-col gap-2 text-center justify-center">
                 <div className="flex muted px-3 py-2 text-sm justify-center items-align">Key Features</div>
                 <h2 className={`text-title font-bold ${styles.h2}`}>Manage Your Appointments with Ease</h2>
                 <p className={`text-muted-foreground ${styles.p}`}>
-                  Our appointment management system provides a range of features to help you streamline your scheduling
-                  and communication with clients.
+                  Our appointment management system provides a range of features to help you streamline your
                 </p>
+                <p className={`text-muted-foreground ${styles.p}`}>scheduling and communication with clients.</p>
               </div>
             </div>
             <div className={`flex items-center gap-6 py-12 ${styles.secondDiv}`} id="second-div">
-              <div className="flex flex-col justify-center">
-                <ul className="list-none line-height-28">
-                  <li>
-                    <div className="gap-1">
-                      <h3 className={`font-bold ${styles.h3}`}>Calendar View</h3>
-                      <p className={`text-muted-foreground ${styles.p}`}>
-                        Easily view and manage your appointments in a user-friendly calendar interface.
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="gap-1">
-                      <h3 className={`font-bold ${styles.h3}`}>Automated Reminders</h3>
-                      <p className={`text-muted-foreground ${styles.p}`}>
-                        Set up automated reminders to ensure your clients never miss an appointment.
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="gap-1">
-                      <h3 className={`font-bold ${styles.h3}`}>Reporting</h3>
-                      <p className={`text-muted-foreground ${styles.p}`}>
-                        Generate detailed reports to track your appointment history and client engagement.
-                      </p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
+              <ul className="flex flex-col gap-4 list-none line-height-28">
+                <li>
+                  <div className="flex flex-col gap-1">
+                    <h3 className={`font-bold ${styles.h3}`}>Calendar View</h3>
+                    <p className={`text-muted-foreground ${styles.p}`}>
+                      Easily view and manage your appointments in a user-friendly calendar interface.
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <div className="flex flex-col gap-1">
+                    <h3 className={`font-bold ${styles.h3}`}>Automated Reminders</h3>
+                    <p className={`text-muted-foreground ${styles.p}`}>
+                      Set up automated reminders to ensure your clients never miss an appointment.
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <div className="gap-1">
+                    <h3 className={`font-bold ${styles.h3}`}>Reporting</h3>
+                    <p className={`text-muted-foreground ${styles.p}`}>
+                      Generate detailed reports to track your appointment history and client engagement.
+                    </p>
+                  </div>
+                </li>
+              </ul>
               <img src={placeholder} width="550" height="310" alt="Calendar" />
             </div>
           </div>
@@ -105,9 +103,7 @@ export const LandingPageComponent = () => {
             <div className="flex flex-col justify-center items-center">
               <h2 className={`flex flex-col text-title font-bold py-5 items-center ${styles.h2}`}>About us!</h2>
               <p className={`text-muted-foreground ${styles.p}`}>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Et asperiores voluptatem modi excepturi, rerum
-                sed, reiciendis, optio dolorem cupiditate aliquid laudantium enim eligendi repellendus nulla incidunt
-                iusto? Amet, voluptatem natus.
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Et asperiores voluptatem modi excepturi
               </p>
             </div>
             <div className="flex justify-center py-6 gap-2">
@@ -129,10 +125,15 @@ export const LandingPageComponent = () => {
             </div>
             <div className="flex flex-col items-center w-full">
               <form className="gap-4">
-                <InputComponent variant="primary" type="email" placeholder="Enter your email" />
+                <InputComponent
+                  className="rounded-r-none"
+                  variant="primary"
+                  type="email"
+                  placeholder="Enter your email"
+                />
                 <Button
                   variant="primary"
-                  className={`inline-flex h-10 items-center justify-center rounded px-8 ${styles.primary} ${styles.linkBtn}`}
+                  className={` h-10 items-center justify-center rounded-l-none px-8 ${styles.primary} ${styles.linkBtn}`}
                   type="submit">
                   Sign Up
                 </Button>
