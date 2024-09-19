@@ -39,12 +39,12 @@ export const LandingPageComponent = () => {
                 <div className="gap-3 flex flex-row py-3">
                   <Link
                     to="/register"
-                    className={`inline-flex h-10 items-center justify-center ${styles.primary} rounded px-8`}>
+                    className={`inline-flex h-10 items-center justify-center ${styles.primary} rounded px-8 ${styles.linkBtn}`}>
                     Sign Up
                   </Link>
                   <Link
                     to="/login"
-                    className={`inline-flex h-10 items-center justify-center ${styles.borderPrimary} rounded px-8`}>
+                    className={`inline-flex h-10 items-center justify-center ${styles.borderPrimary} rounded px-8 ${styles.linkBtn}`}>
                     Sign In
                   </Link>
                 </div>
@@ -113,7 +113,7 @@ export const LandingPageComponent = () => {
             <div className="flex justify-center py-6 gap-2">
               <Link
                 to="#"
-                className={`inline-flex h-10 items-center justify-center ${styles.borderPrimary} rounded px-8`}>
+                className={`inline-flex h-10 items-center justify-center ${styles.borderPrimary} rounded px-8 ${styles.linkBtn}`}>
                 Learn More
               </Link>
             </div>
@@ -132,7 +132,7 @@ export const LandingPageComponent = () => {
                 <InputComponent variant="primary" type="email" placeholder="Enter your email" />
                 <Button
                   variant="primary"
-                  className={`inline-flex h-10 items-center justify-center rounded px-8 ${styles.primary}`}
+                  className={`inline-flex h-10 items-center justify-center rounded px-8 ${styles.primary} ${styles.linkBtn}`}
                   type="submit">
                   Sign Up
                 </Button>

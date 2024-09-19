@@ -11,7 +11,7 @@ type InputProps = InputHTMLAttributes<HTMLInputElement>;
 export const PasswordInput = forwardRef<Ref, InputProps>((props, ref) => {
   const [showPassword, setShowPassword] = useState(false);
   return (
-    <div className={styles.inputContainer}>
+    <div>
       <InputComponent
         variant="primary"
         ref={ref}

@@ -1,0 +1,19 @@
+.borderPrimary:focus {
+  border-color: var(--primary);
+}
+.borderSecondary:focus {
+  border-color: var(--secondary);
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  
+  background-color: #ccc;
+}
+
+.inputContainer:focus-within {
+  outline: 3px solid #2563eb;
+}

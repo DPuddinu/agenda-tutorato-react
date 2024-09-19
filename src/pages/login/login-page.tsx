@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../../components/button/button.tsx';
 import { login } from '../../features/auth/api/auth';
 import { LoginFormSchema, LoginPayload } from '../../features/auth/types/auth.types.ts';
+import styles from './login.module.css';
 
 export const LoginPage = () => {
   const navigate = useNavigate();
@@ -41,31 +42,35 @@ export const LoginPage = () => {
             <label htmlFor="email">
               <b>Email</b>
             </label>
-            <InputComponent
-              variant="primary"
-              required
-              id="email"
-              type="email"
-              placeholder="example@email.com"
-              {...register('email')}
-            />
-            {errors.email && (
-              <span id="errorUser" className="error">
-                {errors.email.message}
-              </span>
-            )}
+            <div className={styles.inputContainer}>
+              <InputComponent
+                variant="primary"
+                required
+                id="email"
+                type="email"
+                placeholder="example@email.com"
+                {...register('email')}
+              />
+              {errors.email && (
+                <span id="errorUser" className="error">
+                  {errors.email.message}
+                </span>
+              )}
+            </div>
           </div>
           <div className="flex flex-col gap-2">
             <label htmlFor="password" className="flex gap-2">
               <b>Password</b>
             </label>
-            <PasswordInput {...register('password')} />
-            {isError && (
-              <span id="loginError" className="error">
-                Something went wrong!
-              </span>
-            )}
+            <div className={styles.inputContainer}>
+              <PasswordInput {...register('password')} />
+            </div>
           </div>
+          {errors.password && (
+            <span id="errorPass" className="error">
+              {errors.password.message}
+            </span>
+          )}
         </div>
         <Button variant="primary" type="submit" disabled={isSubmitting || isPending}>
           {isPending ? <Spinner color="current" /> : 'Sign in'}
