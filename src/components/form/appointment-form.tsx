@@ -2,7 +2,7 @@ import { Appointment, AppointmentPayload, AppointmentPayloadSchema } from '@/mod
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { InputComponent } from '../input-component/input-component';
-import './appointmentForm.css';
+import styles from './appointmentForm.module.css';
 
 interface Props {
   appointment?: Appointment;
@@ -33,15 +33,21 @@ export const AppointmentForm = ({ appointment }: Props) => {
       )}
       onReset={() => reset()}>
       <div className="flex flex-col justify-center gap-1">
-        <label htmlFor="description" className="py-3 ">
+        <label htmlFor="description" className={`py-3 ${styles.label}`}>
           Description
         </label>
-        <textarea {...register('description')} autoFocus placeholder="Describe your appointment"></textarea>
+        <textarea
+          {...register('description')}
+          autoFocus
+          placeholder="Describe your appointment"
+          className={styles.textarea}></textarea>
         {errors.description && <span className="error">{errors.description.message}</span>}
       </div>
-      <div className="flex flex-date">
+      <div className={`flex ${styles.flexDate}`}>
         <div className="flex flex-col gap-2 ">
-          <label htmlFor="dueDate">Due Date</label>
+          <label htmlFor="dueDate" className={styles.label}>
+            Due Date
+          </label>
           <InputComponent
             {...register('dueDate', {
               valueAsDate: true
@@ -51,12 +57,15 @@ export const AppointmentForm = ({ appointment }: Props) => {
           />
           {errors.dueDate && <span className="error">{errors.dueDate.message}</span>}
         </div>
-        <div className="flex flex-col gap-2  py-2 pt-1">
-          <label htmlFor="category">Category</label>
+        <div className="flex flex-col gap-2 py-2 pt-1">
+          <label htmlFor="category" className={styles.label}>
+            Category
+          </label>
           <select
             {...register('categoryId', {
               valueAsNumber: true
-            })}>
+            })}
+            className={styles.select}>
             <option value="" disabled>
               Select an option
             </option>

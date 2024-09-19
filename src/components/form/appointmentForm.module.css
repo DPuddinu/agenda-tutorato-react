@@ -1,54 +1,53 @@
-textarea {
+.textarea {
     height: 150px;
     margin-right: 1rem;
     margin-left: 1rem;
 }
 
-footer>input {
+.footerInput {
     text-decoration: none;
     border: none;
 }
 
-section {
-    background-color: #ddd
+.section {
+    background-color: #ddd;
 }
 
-input,
-select {
+.input,
+.select {
     height: 1.75rem;
 }
 
-.flex-date {
+.flexDate {
     flex-direction: column;
 }
 
-label {
+.label {
     font-size: 1.75rem;
 }
 
 /* Stili per dispositivi piccoli (smarphone) */
 @media (max-width: 410px) {
-
-    input,
-    select {
+    .input,
+    .select {
         max-width: 165px;
     }
 }
 
 /* Stili per dispositivi medi (tablet) */
 @media (min-width: 411px) and (max-width: 900px) {
-    label {
+    .label {
         font-size: 2.75rem;
     }
 
-    textarea {
+    .textarea {
         height: 200px;
         margin-right: 1rem;
         margin-left: rem;
     }
 
-    input,
-    select {
+    .input,
+    .select {
         height: 2.75rem;
         width: 300px;
     }
@@ -56,12 +55,12 @@ label {
 
 /* Stili per dispositivi grandi (Desktop) */
 @media (min-width: 901px) {
-    textarea {
+    .textarea {
         max-width: 600px;
     }
 
-    input,
-    select {
+    .input,
+    .select {
         height: 2.75rem;
         width: 300px;
     }

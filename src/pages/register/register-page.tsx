@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/button/button.tsx';
 import { register as registerUser } from '../../features/auth/api/auth';
+import styles from './register.module.css'
 
 export const RegisterPage = () => {
   const navigate = useNavigate();
@@ -47,25 +48,29 @@ export const RegisterPage = () => {
             <label htmlFor="email">
               <strong>Email</strong>
             </label>
-            <InputComponent
-              variant="primary"
-              required
-              id="email"
-              type="email"
-              placeholder="example@email.com"
-              {...register('email')}
-            />
-            {errors.email && (
-              <span id="errorUser" className="error">
-                {errors.email.message}
-              </span>
-            )}
+            <div className={styles.inputContainer}>
+              <InputComponent
+                variant="primary"
+                required
+                id="email"
+                type="email"
+                placeholder="example@email.com"
+                {...register('email')}
+              />
+              {errors.email && (
+                <span id="errorUser" className="error">
+                  {errors.email.message}
+                </span>
+              )}
+            </div>
           </div>
           <div className="flex flex-col gap-2">
             <label htmlFor="password" className="flex gap-2">
               <b>Password</b>
             </label>
-            <PasswordInput {...register('password')} />
+            <div className={styles.inputContainer}>
+              <PasswordInput {...register('password')} />
+            </div>
           </div>
 
           <div className="flex flex-col gap-2">
@@ -77,7 +82,9 @@ export const RegisterPage = () => {
                 {errors.password.message}
               </span>
             )}
-            <PasswordInput {...register('confirmPassword')} />
+            <div className={styles.inputContainer}>
+              <PasswordInput {...register('confirmPassword')} />
+            </div>
             {errors.confirmPassword && (
               <span id="errorConfirmPass" className="error">
                 {errors.confirmPassword.message}

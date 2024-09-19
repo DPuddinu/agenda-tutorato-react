@@ -1,0 +1,15 @@
+select {
+  padding: 0.5rem;
+  /* border-radius: 0.25rem; */
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+}
+
+.select.primary {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.select.secondary {
+  background-color: var(--secondary);
+}
