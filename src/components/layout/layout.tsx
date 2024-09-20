@@ -1,33 +1,28 @@
-import { useRef } from 'react';
+import { ReactNode } from 'react';
 import Sides from '../sides/sides';
 import { TableAppointment } from '../table/appointment-table';
 import ToolBar from '../toolbar/toolbar';
-import Dialog, { DialogRef } from '../dialog/appointmentDialog'; 
-import { AppointmentForm } from '../form/appointment-form';
+import { getAppointments } from '@/features/auth/api/appointment';
+import { useQuery } from '@tanstack/react-query';
 
-const Layout = () => {
-  const dialogRef = useRef<DialogRef>(null);
+interface LayoutProps {
+  children: ReactNode;
+}
 
-  const handleOpenDialog = () => {
-    dialogRef.current?.open();
-  };
-
-  const handleCloseDialog = () => {
-    console.log('Dialog closed');
-  };
-
+const Layout = ({ children }: LayoutProps) => {
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ['appointments'],
+    queryFn: getAppointments
+  });
   return (
     <>
       <header>
-        <ToolBar onNewAppointmentClick={handleOpenDialog} />
+        <ToolBar />
       </header>
       <main>
         <TableAppointment />
         <Sides />
-
-        <Dialog ref={dialogRef} title="New Appointment" onClose={handleCloseDialog}>
-          <AppointmentForm/>
-        </Dialog>
+        {children}
       </main>
     </>
   );
