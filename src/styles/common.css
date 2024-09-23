@@ -17,18 +17,6 @@ svg {
   color: black;
 }
 
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 0;
-  border-bottom: 1px solid #ddd;
-}
-
-main {
-  padding: 40px 0;
-}
-
 html,
 body {
   min-height: 100dvh;
@@ -54,10 +42,6 @@ footer nav a {
   color: #555;
 }
 
-nav {
-  display: flex;
-  gap: 20px;
-}
 
 nav a {
   text-decoration: none;
