@@ -1,5 +1,5 @@
 import Layout from '@/components/layout/layout';
 
 export const AppointmentsPage = () => {
-  return <Layout>AppointmentsPage</Layout>;
+  return <Layout></Layout>;
 };
