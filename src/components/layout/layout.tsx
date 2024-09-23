@@ -1,30 +1,48 @@
-import { ReactNode } from 'react';
-import Sides from '../sides/sides';
-import { TableAppointment } from '../table/appointment-table';
-import ToolBar from '../toolbar/toolbar';
-import { getAppointments } from '@/features/auth/api/appointment';
-import { useQuery } from '@tanstack/react-query';
+import { PropsWithChildren, useState } from 'react';
+import Button from '../button/button';
+import { ListMenu } from '../list-menu/list-menu';
+import { Logout } from '../logout-button/logout';
+import Side from '../sides/sides';
+import styles from './layout.module.css';
 
-interface LayoutProps {
-  children: ReactNode;
-}
+const Layout = ({ children }: PropsWithChildren) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-const Layout = ({ children }: LayoutProps) => {
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ['appointments'],
-    queryFn: getAppointments
-  });
+  const toggleMenu = () => {
+    setIsOpen((prev) => !prev);
+  };
+  const toggleModal = () => {
+    setIsModalOpen((prev) => !prev);
+  };
   return (
-    <>
+    <div className={styles.layout}>
       <header>
-        <ToolBar />
+        <nav className={styles.nav}>
+          <div className={styles.listMenu}>
+            <ListMenu />
+          </div>
+          <Side isOpen={isOpen} toggleMenu={toggleMenu} />
+          <div className={styles.accountButtonWrapper}>
+            <Button className={styles.btnAccount} onClick={toggleModal}>
+              F
+            </Button>
+            {isModalOpen && (
+              <div className={styles.modal}>
+                <p>
+                  <a href="#">Account </a>
+                </p>
+                <p>
+                  <a href="#">Settings</a>
+                </p>
+                <Logout />
+              </div>
+            )}
+          </div>
+        </nav>
       </header>
-      <main>
-        <TableAppointment />
-        <Sides />
-        {children}
-      </main>
-    </>
+      <main>{children}</main>
+    </div>
   );
 };
 

@@ -3,14 +3,11 @@ import pencil from '../../assets/icons/pencil.svg';
 import trashcan from '../../assets/icons/trash-can.svg';
 
 type Props = {
-  appointments?: Appointment[];
+  appointments: Appointment[];
 };
-export const TableAppointment = ({ appointments = [] }: Props) => {
+export const TableAppointment = ({ appointments }: Props) => {
   return (
-    <div className="background text-foreground rounded shadow-md">
-      <div className="flex items-center justify-between p-4 border-b border-t">
-        <h2 className="text-xl font-semibold">Appointments</h2>
-      </div>
+    <div className=" text-foreground rounded shadow-md">
       <div className="overflow-x-auto">
         <table className="w-full table-auto">
           <thead className="muted text-muted-foreground">

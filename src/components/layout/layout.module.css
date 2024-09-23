@@ -1,0 +1,118 @@
+.accountButtonWrapper {
+  position: relative;
+}
+
+.modal {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100px;
+  border-radius: 8px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal p {
+  margin: 0;
+  padding: 10px;
+  cursor: pointer;
+  
+}
+
+.modal p:hover {
+  background-color: #f0f0f0;
+}
+
+.layout {
+  header {
+    padding-left: calc(var(--spacer));
+    padding-top: calc(var(--spacer));
+    padding-bottom: calc(var(--spacer));
+    padding-right: calc(var(--spacer));
+    box-shadow: 3px 3px 3px rgba(133, 133, 133, 0.3);
+  }
+}
+/* Stili per smartphone */
+@media (max-width: 430px) {
+  .nav {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+  .btnAccount {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    width: 2rem;
+    height: 2rem;
+  }
+  .listMenu {
+    display: none;
+  }
+}
+
+/* Stili per dispositivi medi (tablet) */
+@media (min-width: 431px) and (max-width: 900px) {
+  .nav {
+    display: flex;
+    justify-content: space-between;
+  }
+  .title {
+    font-size: 2rem;
+  }
+  .btnAccount {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .listMenu {
+    display: none;
+  }
+}
+
+/* Stili per dispositivi grandi (desktop) */
+@media (min-width: 901px) {
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .btnAccount {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .listMenu {
+    display: flex;
+
+    ul {
+      display: flex;
+    }
+    li {
+      padding-left: 2rem;
+      font-size: 1.5rem;
+    }
+  }
+  .title {
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+  }
+}
