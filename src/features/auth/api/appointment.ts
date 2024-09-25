@@ -1,4 +1,4 @@
-import { api } from '@/core/api';
+import { api, getToken } from '@/core/api';
 import { Appointment, AppointmentSchema } from '@/models/appointment';
 import { z } from 'zod';
 
@@ -28,6 +28,21 @@ export async function getAppointments(): Promise<TGetAppointments> {
     return schema.parse(data);
   } catch (error) {
     console.error('Error parsing appointments data:', error);
+    throw error;
+  }
+}
+
+export type TGetAppointmentsByAuthorId = z.infer<typeof schema>;
+
+export async function getAppointmentsByAuthorId(): Promise<TGetAppointmentsByAuthorId> {
+  try {
+    const token = getToken();
+    const response = await api.get(`/appointments/user/${token}`);
+    const data = await response.json();
+    return schema.parse(data);
+  } catch (error) {
+    console.error('Error parsing appointments data for author:', error);
+
     throw error;
   }
 }
