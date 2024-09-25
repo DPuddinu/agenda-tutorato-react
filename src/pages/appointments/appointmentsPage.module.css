@@ -1,0 +1,64 @@
+.title {
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+}
+
+
+/* Stili per smartphone */
+@media (max-width: 430px) {
+    .addAppBtn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100%;
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .addAppBtn:after {
+        content: '+';
+    }
+
+}
+
+/* Stili per dispositivi medi (tablet) */
+@media (min-width: 431px) and (max-width: 900px) {
+    .addAppBtn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100%;
+        width: 3rem;
+        height: 3rem;
+    }
+
+    .addAppBtn:after {
+        content: '+';
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+}
+
+/* Stili per dispositivi grandi (desktop) */
+@media (min-width: 901px) {
+    .addAppBtn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 10rem;
+        height: 4rem;
+        font-size: 1rem;
+
+    }
+
+    .addAppBtn:after {
+        content: 'Add appointment';
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+}

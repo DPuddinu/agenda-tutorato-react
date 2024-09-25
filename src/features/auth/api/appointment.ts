@@ -14,24 +14,22 @@ export async function createAppointment(appointmentData: Appointment) {
   return await response.json();
 }
 
-export async function getAppointments() {
-  const response = await api.get('/appointments');
-
-  if (!response.ok) {
-    return {
-      status: 'error',
-      message: 'Failed to fetch appointments'
-    };
+const schema = z.object({
+  data: AppointmentSchema.array(),
+  page: z.number(),
+  total: z.number(),
+  limit: z.number()
+});
+export type TGetAppointments = z.infer<typeof schema>;
+export async function getAppointments(): Promise<TGetAppointments> {
+  try {
+    const response = await api.get('/appointments');
+    const data = await response.json();
+    return schema.parse(data);
+  } catch (error) {
+    console.error('Error parsing appointments data:', error);
+    throw error;
   }
-  const data = await response.json();
-  const schema = z.object({
-    data: AppointmentSchema.array(),
-    page: z.number(),
-    total: z.number(),
-    limit: z.number()
-  });
-
-  return schema.parse(data);
 }
 
 export async function getAppointmentById(appointmentId: string) {

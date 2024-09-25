@@ -27,7 +27,7 @@ export const LandingPageComponent = () => {
       </header>
       <main>
         <section className={`w-full py-48 ${styles.mainSection}`} id="main-section">
-          <div className={styles.container}>
+          <div className="container">
             <div className={`flex ${styles.mainDiv}`} id="main-div">
               <div className="flex flex-col justify-center">
                 <div className="flex flex-col">
@@ -44,7 +44,7 @@ export const LandingPageComponent = () => {
                   </Link>
                   <Link
                     to="/login"
-                    className={`inline-flex h-10 items-center justify-center ${styles.borderPrimary} rounded px-8 ${styles.linkBtn}`}>
+                    className={`inline-flex h-10 items-center justify-center borderPrimary rounded px-8 ${styles.linkBtn}`}>
                     Sign In
                   </Link>
                 </div>
@@ -101,7 +101,7 @@ export const LandingPageComponent = () => {
           </div>
         </section>
         <section className="w-full py-8" id="about_us">
-          <div className={`container gap-6 justify-center items-center ${styles.container}`}>
+          <div className={`container gap-6 justify-center items-center container`}>
             <div className="flex flex-col justify-center items-center">
               <h2 className={`flex flex-col text-title font-bold py-5 items-center ${styles.h2}`}>About us!</h2>
               <p className={`text-muted-foreground ${styles.p}`}>
@@ -113,7 +113,7 @@ export const LandingPageComponent = () => {
             <div className="flex justify-center py-6 gap-2">
               <Link
                 to="#"
-                className={`inline-flex h-10 items-center justify-center ${styles.borderPrimary} rounded px-8 ${styles.linkBtn}`}>
+                className={`inline-flex h-10 items-center justify-center borderPrimary rounded px-8 ${styles.linkBtn}`}>
                 Learn More
               </Link>
             </div>
