@@ -1,4 +1,4 @@
-import { api } from '@/core/api';
+import { api, getToken } from '@/core/api';
 import { Appointment, AppointmentSchema } from '@/models/appointment';
 import { z } from 'zod';
 
@@ -14,24 +14,37 @@ export async function createAppointment(appointmentData: Appointment) {
   return await response.json();
 }
 
-export async function getAppointments() {
-  const response = await api.get('/appointments');
-
-  if (!response.ok) {
-    return {
-      status: 'error',
-      message: 'Failed to fetch appointments'
-    };
+const schema = z.object({
+  data: AppointmentSchema.array(),
+  page: z.number(),
+  total: z.number(),
+  limit: z.number()
+});
+export type TGetAppointments = z.infer<typeof schema>;
+export async function getAppointments(): Promise<TGetAppointments> {
+  try {
+    const response = await api.get('/appointments');
+    const data = await response.json();
+    return schema.parse(data);
+  } catch (error) {
+    console.error('Error parsing appointments data:', error);
+    throw error;
   }
-  const data = await response.json();
-  const schema = z.object({
-    data: AppointmentSchema.array(),
-    page: z.number(),
-    total: z.number(),
-    limit: z.number()
-  });
+}
 
-  return schema.parse(data);
+export type TGetAppointmentsByAuthorId = z.infer<typeof schema>;
+
+export async function getAppointmentsByAuthorId(): Promise<TGetAppointmentsByAuthorId> {
+  try {
+    const token = getToken();
+    const response = await api.get(`/appointments/user/${token}`);
+    const data = await response.json();
+    return schema.parse(data);
+  } catch (error) {
+    console.error('Error parsing appointments data for author:', error);
+
+    throw error;
+  }
 }
 
 export async function getAppointmentById(appointmentId: string) {

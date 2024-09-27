@@ -1,12 +1,13 @@
+import { Link } from 'react-router-dom';
 import styles from './listMenu.module.css'
 export const ListMenu = () => {
   return (
     <ul className={styles.list}>
       <li>
-        <a href="#">Dashboard</a>
+        <Link to={'/dashboard'} >Dashboard</Link>
       </li>
       <li>
-        <a href="#">Link 2</a>
+        <Link to={'/link2'}>Link2</Link>
       </li>
       <li>
         <a href="#">Link 3</a>
