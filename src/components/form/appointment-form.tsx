@@ -1,6 +1,7 @@
 import { Appointment, AppointmentPayload, AppointmentPayloadSchema } from '@/models/appointment';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
+import Button from '../button/button';
 import { InputComponent } from '../input-component/input-component';
 import styles from './appointmentForm.module.css';
 
@@ -57,7 +58,7 @@ export const AppointmentForm = ({ appointment }: Props) => {
           />
           {errors.dueDate && <span className="error">{errors.dueDate.message}</span>}
         </div>
-        <div className="flex flex-col gap-2 py-2 pt-1">
+        <div className="flex flex-col justify-center gap-4 py-2 pt-1">
           <label htmlFor="category" className={styles.label}>
             Category
           </label>
@@ -76,14 +77,17 @@ export const AppointmentForm = ({ appointment }: Props) => {
             <option value="5">School</option>
           </select>
           {errors.categoryId && <span className="error">{errors.categoryId.message}</span>}
-          <div className="flex gap-2">
-            <InputComponent
+          <div className="flex justify-center gap-4">
+            <Button
               disabled={isSubmitting}
               variant="primary"
               type="submit"
-              className="flex h-10 items-center justify-center rounded"
-            />
-            <InputComponent variant="primary" type="reset" className="flex h-10 items-center justify-center rounded" />
+              className="flex h-10 items-center justify-center rounded">
+              Invia
+            </Button>
+            <Button variant="primary" type="reset" className="flex h-10 items-center justify-center rounded">
+              Reset
+            </Button>
           </div>
         </div>
       </div>

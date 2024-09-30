@@ -1,4 +1,4 @@
-import { forwardRef, ReactNode, useImperativeHandle, useState } from 'react';
+import { forwardRef, ReactNode, useImperativeHandle, useRef } from 'react';
 import styles from './appointmentDialog.module.css';
 
 export type DialogRef = {
@@ -13,34 +13,31 @@ interface DialogProps {
 }
 
 const Dialog = forwardRef<DialogRef, DialogProps>(({ title, onClose, children }, ref) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const dialogRef = useRef<HTMLDialogElement>(null);
 
   useImperativeHandle(ref, () => ({
     open() {
-      setIsOpen(true);
+      dialogRef.current?.showModal();
     },
     close() {
-      setIsOpen(false);
-      onClose();
+      dialogRef.current?.close();
     }
   }));
 
-  if (!isOpen) {
-    return null;
-  }
+  const handleDialogClose = () => {
+    onClose();
+  };
 
   return (
-    <div className={styles.overlay}>
-      <div className={styles.dialog}>
-        <div className={styles.header}>
-          <h2>{title}</h2>
-          <button onClick={() => setIsOpen(false)} className={styles.closeButton}>
-            X
-          </button>
-        </div>
-        <div className={styles.body}>{children}</div>
+    <dialog ref={dialogRef} className={styles.dialog} onClose={handleDialogClose}>
+      <div className={styles.header}>
+        <h2 className={styles.h2}>{title}</h2>
+        <button onClick={() => dialogRef.current?.close()} className={styles.closeButton}>
+          X
+        </button>
       </div>
-    </div>
+      <div className={styles.body}>{children}</div>
+    </dialog>
   );
 });
 
