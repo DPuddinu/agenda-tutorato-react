@@ -4,7 +4,7 @@ import styles from './appointmentDialog.module.css';
 interface DialogProps {
   title: string;
   isOpen: boolean; 
-  onClose: () => void;
+  onClose: () => void; 
   children: ReactNode;
 }
 
@@ -13,9 +13,11 @@ const Dialog = ({ title, isOpen, onClose, children }: DialogProps) => {
     <dialog open={isOpen} className={styles.dialog} onClose={onClose}>
       <div className={styles.header}>
         <h2 className={styles.h2}>{title}</h2>
-        <button onClick={onClose} className={styles.closeButton}>
-          X
-        </button>
+        <form method="dialog">
+          <button type="button" onClick={onClose} className={styles.closeButton}>
+            X
+          </button>
+        </form>
       </div>
       <div className={styles.body}>{children}</div>
     </dialog>
