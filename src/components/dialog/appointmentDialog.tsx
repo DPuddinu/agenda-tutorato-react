@@ -1,16 +1,15 @@
-import { ReactNode } from 'react';
+import { forwardRef, ReactNode } from 'react';
 import styles from './appointmentDialog.module.css';
 
 interface DialogProps {
   title: string;
-  isOpen: boolean; 
-  onClose: () => void; 
+  onClose: () => void;
   children: ReactNode;
 }
 
-const Dialog = ({ title, isOpen, onClose, children }: DialogProps) => {
+const Dialog = forwardRef<HTMLDialogElement, DialogProps>(({ title, onClose, children }, ref) => {
   return (
-    <dialog open={isOpen} className={styles.dialog} onClose={onClose}>
+    <dialog className={styles.dialog} ref={ref}>
       <div className={styles.header}>
         <h2 className={styles.h2}>{title}</h2>
         <form method="dialog">
@@ -22,6 +21,6 @@ const Dialog = ({ title, isOpen, onClose, children }: DialogProps) => {
       <div className={styles.body}>{children}</div>
     </dialog>
   );
-};
+});
 
 export default Dialog;
