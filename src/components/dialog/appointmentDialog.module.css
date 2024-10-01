@@ -1,0 +1,31 @@
+.dialog {
+    background: white;
+    padding: 1.25rem;
+    border-radius: 0.5rem;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/* Stili per dispositivi piccoli (smartphone) */
+@media (max-width: 430px) {
+    .h2 {
+        font-size: 1.75rem;
+        padding-right: 2rem;
+    }
+}
+
+/* Stili per dispositivi medi (tablet) */
+@media (min-width: 431px) {
+    .h2 {
+        font-size: 3rem;
+        padding-right: 2rem;
+    }
+}
+
+/* Stili per dispositivi grandi (desktop) */
+@media (min-width: 901px) {}
