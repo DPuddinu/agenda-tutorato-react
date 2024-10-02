@@ -33,7 +33,7 @@ export const AppointmentsPage = () => {
         <p className={styles.title}>Dashboard</p>
         <Button className={styles.addAppBtn} onClick={openDialog} />
         <Dialog title="Add New Appointment" onClose={closeDialog} ref={dialogRef}>
-          <AppointmentForm />
+          <AppointmentForm onClose={closeDialog} />
         </Dialog>
       </div>
       <div>

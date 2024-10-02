@@ -1,10 +1,9 @@
-import { api, getToken } from '@/core/api';
-import { Appointment, AppointmentSchema } from '@/models/appointment';
+import { api } from '@/core/api';
+import { Appointment, AppointmentPayload, AppointmentSchema } from '@/models/appointment';
 import { z } from 'zod';
 
-export async function createAppointment(appointmentData: Appointment) {
+export async function createAppointment(appointmentData: AppointmentPayload) {
   const response = await api.post('/appointments', appointmentData);
-
   if (!response.ok) {
     return {
       status: 'error',
@@ -36,13 +35,11 @@ export type TGetAppointmentsByAuthorId = z.infer<typeof schema>;
 
 export async function getAppointmentsByAuthorId(): Promise<TGetAppointmentsByAuthorId> {
   try {
-    const token = getToken();
-    const response = await api.get(`/appointments/user/${token}`);
+    const response = await api.get(`/appointments`);
     const data = await response.json();
     return schema.parse(data);
   } catch (error) {
     console.error('Error parsing appointments data for author:', error);
-
     throw error;
   }
 }

@@ -1,3 +1,4 @@
+import { createAppointment } from '@/features/auth/api/appointment';
 import { Appointment, AppointmentPayload, AppointmentPayloadSchema } from '@/models/appointment';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
@@ -7,9 +8,10 @@ import styles from './appointmentForm.module.css';
 
 interface Props {
   appointment?: Appointment;
+  onClose: () => void;
 }
 
-export const AppointmentForm = ({ appointment }: Props) => {
+export const AppointmentForm = ({ appointment, onClose }: Props) => {
   const {
     register,
     reset,
@@ -17,21 +19,30 @@ export const AppointmentForm = ({ appointment }: Props) => {
     formState: { errors, isSubmitting }
   } = useForm<AppointmentPayload>({
     resolver: zodResolver(AppointmentPayloadSchema),
-    defaultValues: appointment
-      ? {
-          ...appointment,
-          dueDate: appointment.dueDate || undefined
-        }
-      : undefined
+    defaultValues: {
+      categoryId: appointment?.categoryId,
+      description: appointment?.description,
+      dueDate: appointment?.dueDate
+    }
   });
+
+  const onSubmit = async (data: AppointmentPayload) => {
+    const parsedData = {
+      ...data
+    };
+    try {
+      await createAppointment(parsedData);
+      reset();
+      onClose();
+    } catch (error) {
+      console.error('An error occurred while creating the appointment:', error);
+    }
+  };
 
   return (
     <form
       className="flex flex-col justify-center gap-4"
-      onSubmit={handleSubmit(
-        (data) => console.log(data),
-        (error) => console.log(error)
-      )}
+      onSubmit={handleSubmit(onSubmit, (error) => console.log(error))}
       onReset={() => reset()}>
       <div className="flex flex-col justify-center gap-1">
         <label htmlFor="description" className={`py-3 ${styles.label}`}>
@@ -51,7 +62,7 @@ export const AppointmentForm = ({ appointment }: Props) => {
           </label>
           <InputComponent
             {...register('dueDate', {
-              valueAsDate: true
+              valueAsDate: false
             })}
             variant="primary"
             type="datetime-local"
