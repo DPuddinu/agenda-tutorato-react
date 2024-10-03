@@ -68,7 +68,7 @@ export async function updateAppointment(appointmentId: string, updatedData: Appo
   return await response.json();
 }
 
-export async function deleteAppointment(appointmentId: string) {
+export async function deleteAppointment(appointmentId: number ) {
   const response = await api.delete(`/appointments/${appointmentId}`);
 
   if (!response.ok) {
