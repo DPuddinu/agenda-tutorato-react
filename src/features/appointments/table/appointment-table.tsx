@@ -1,7 +1,7 @@
+import pencil from '@/assets/icons/pencil.svg';
 import { Appointment } from '@/models/appointment';
-import Button from '../../../components/button/button';
-import pencil from '../../assets/icons/pencil.svg';
-import trashcan from '../../assets/icons/trash-can.svg';
+import Button from '@/components/button/button';
+import trashcan from '@/assets/icons/trash-can.svg';
 import styles from './appointmentTable.module.css';
 
 type Props = {

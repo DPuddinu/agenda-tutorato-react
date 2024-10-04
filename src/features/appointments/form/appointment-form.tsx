@@ -4,8 +4,8 @@ import { GET_APPOINTMENTS_KEY } from '@/pages/appointments/constants';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
-import Button from '../../../components/button/button';
-import { InputComponent } from '../../../components/input-component/input-component';
+import Button from '@/components/button/button';
+import { InputComponent } from '@/components/input-component/input-component';
 import styles from './appointmentForm.module.css';
 
 interface Props {
@@ -26,7 +26,6 @@ export const AppointmentForm = ({ appointment, onClose }: Props) => {
     values: {
       categoryId: appointment?.categoryId ?? 1,
       description: appointment?.description ?? ''
-      // dueDate: appointment?.dueDate
     }
   });
 
@@ -48,7 +47,6 @@ export const AppointmentForm = ({ appointment, onClose }: Props) => {
   });
 
   const onSubmit = async (data: AppointmentPayload) => {
-    // console.log(data);
     mutate(data);
   };
 
