@@ -1,9 +1,11 @@
-import { createAppointment } from '@/features/auth/api/appointment';
+import { createAppointment, updateAppointment } from '@/features/auth/api/appointment';
 import { Appointment, AppointmentPayload, AppointmentPayloadSchema } from '@/models/appointment';
+import { GET_APPOINTMENTS_KEY } from '@/pages/appointments/constants';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
-import Button from '../button/button';
-import { InputComponent } from '../input-component/input-component';
+import Button from '../../../components/button/button';
+import { InputComponent } from '../../../components/input-component/input-component';
 import styles from './appointmentForm.module.css';
 
 interface Props {
@@ -12,6 +14,8 @@ interface Props {
 }
 
 export const AppointmentForm = ({ appointment, onClose }: Props) => {
+  const client = useQueryClient();
+
   const {
     register,
     reset,
@@ -19,24 +23,33 @@ export const AppointmentForm = ({ appointment, onClose }: Props) => {
     formState: { errors, isSubmitting }
   } = useForm<AppointmentPayload>({
     resolver: zodResolver(AppointmentPayloadSchema),
-    defaultValues: {
-      categoryId: appointment?.categoryId,
-      description: appointment?.description,
-      dueDate: appointment?.dueDate
+    values: {
+      categoryId: appointment?.categoryId ?? 1,
+      description: appointment?.description ?? ''
+      // dueDate: appointment?.dueDate
+    }
+  });
+
+  const { mutate, isPending } = useMutation({
+    mutationFn: (data: AppointmentPayload) =>
+      appointment
+        ? updateAppointment({
+            ...data,
+            id: appointment.id
+          })
+        : createAppointment(data),
+    onSuccess() {
+      onClose();
+      reset();
+      client.invalidateQueries({
+        queryKey: GET_APPOINTMENTS_KEY
+      });
     }
   });
 
   const onSubmit = async (data: AppointmentPayload) => {
-    const parsedData = {
-      ...data
-    };
-    try {
-      await createAppointment(parsedData);
-      reset();
-      onClose();
-    } catch (error) {
-      console.error('An error occurred while creating the appointment:', error);
-    }
+    // console.log(data);
+    mutate(data);
   };
 
   return (
@@ -55,7 +68,7 @@ export const AppointmentForm = ({ appointment, onClose }: Props) => {
           className={styles.textarea}></textarea>
         {errors.description && <span className="error">{errors.description.message}</span>}
       </div>
-      <div className={`flex ${styles.flexDate}`}>
+      <div className={`flex flex-col gap-3`}>
         <div className="flex flex-col gap-2 ">
           <label htmlFor="dueDate" className={styles.label}>
             Due Date
@@ -66,10 +79,11 @@ export const AppointmentForm = ({ appointment, onClose }: Props) => {
             })}
             variant="primary"
             type="datetime-local"
+            defaultValue={appointment?.dueDate ? appointment?.dueDate.toISOString().slice(0, 16) : undefined}
           />
           {errors.dueDate && <span className="error">{errors.dueDate.message}</span>}
         </div>
-        <div className="flex flex-col justify-center gap-4 py-2 pt-1">
+        <div className="flex flex-col justify-center gap-4 pt-1">
           <label htmlFor="category" className={styles.label}>
             Category
           </label>
@@ -88,9 +102,9 @@ export const AppointmentForm = ({ appointment, onClose }: Props) => {
             <option value="5">School</option>
           </select>
           {errors.categoryId && <span className="error">{errors.categoryId.message}</span>}
-          <div className="flex justify-center gap-4">
+          <div className="flex justify-end gap-4">
             <Button
-              disabled={isSubmitting}
+              disabled={isSubmitting || isPending}
               variant="primary"
               type="submit"
               className="flex h-10 items-center justify-center rounded">

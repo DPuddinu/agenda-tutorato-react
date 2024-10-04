@@ -1,7 +1,12 @@
-.dialog {
+dialog {
     background: white;
     padding: 1.25rem;
     border-radius: 0.5rem;
+}
+
+::backdrop {
+    background: black;
+    opacity: 30%;
 }
 
 .header {

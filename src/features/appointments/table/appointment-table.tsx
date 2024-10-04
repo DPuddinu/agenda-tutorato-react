@@ -1,12 +1,13 @@
 import { Appointment } from '@/models/appointment';
+import Button from '../../../components/button/button';
 import pencil from '../../assets/icons/pencil.svg';
 import trashcan from '../../assets/icons/trash-can.svg';
-import Button from '../button/button';
 import styles from './appointmentTable.module.css';
 
 type Props = {
   appointments: Appointment[];
   onDelete: (id: number) => void;
+  onEdit: (appointment: Appointment) => void;
 };
 
 const formatDate = (date: Date | null) => {
@@ -21,7 +22,7 @@ const formatDate = (date: Date | null) => {
   return formattedDate;
 };
 
-export const TableAppointment = ({ appointments, onDelete }: Props) => {
+export const TableAppointment = ({ appointments, onDelete, onEdit }: Props) => {
   if (!appointments || appointments.length === 0) {
     return <p>No appointments available.</p>;
   }
@@ -36,8 +37,8 @@ export const TableAppointment = ({ appointments, onDelete }: Props) => {
               <th className="px-4 py-3 font-medium">Description</th>
               <th className="px-4 py-3 font-medium">Due Date</th>
               <th className="px-4 py-3 font-medium">Category</th>
-              <th className="px-4 py-3 font-medium">Edit</th>
               <th className="px-4 py-3 font-medium">Status</th>
+              <th className="px-4 py-3 font-medium">Edit</th>
               <th className="px-4 py-3 font-medium">Delete</th>
             </tr>
           </thead>
@@ -46,19 +47,21 @@ export const TableAppointment = ({ appointments, onDelete }: Props) => {
               <tr key={appointment.id} className="border-b">
                 <td className="px-4 py-3">{formatDate(appointment.creationDate)}</td>
                 <td className="px-4 py-3">{appointment.description}</td>
-                <td className="px-4 py-3">{formatDate(appointment.dueDate)}</td>
+                <td className="px-4 py-3">{appointment.dueDate ? formatDate(appointment.dueDate) : ' - '}</td>
                 <td className="px-4 py-3">{appointment.categoryId}</td>
+                <td className="px-4 py-3">{appointment.completed === 'true' ? 'Completed' : 'Pending'}</td>
                 <td className="px-4 py-3">
-                  <Button className={styles.editDeleteBtn}>
+                  <Button className={styles.editDeleteBtn} onClick={() => onEdit(appointment)}>
                     <img src={pencil} className="icon" alt="Edit" />
                   </Button>
                 </td>
-                <td className="px-4 py-3">{appointment.completed === 'true' ? 'Completed' : 'Pending'}</td>
-                <td className="px-4 py-3">
-                  <Button className={styles.editDeleteBtn} onClick={() => onDelete(appointment.id)}>
-                    <img src={trashcan} className="icon" alt="Delete" />
-                  </Button>
-                </td>
+                {appointment.id && (
+                  <td className="px-4 py-3">
+                    <Button className={styles.editDeleteBtn} onClick={() => onDelete(appointment.id!)}>
+                      <img src={trashcan} className="icon" alt="Delete" />
+                    </Button>
+                  </td>
+                )}
               </tr>
             ))}
           </tbody>

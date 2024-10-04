@@ -1,7 +1,5 @@
 .textarea {
-    height: 150px;
-    margin-right: 1rem;
-    margin-left: 1rem;
+    height: 9rem;
 }
 
 .footerInput {
@@ -18,16 +16,13 @@
     height: 1.75rem;
 }
 
-.flexDate {
-    flex-direction: column;
-}
-
 .label {
     font-size: 1.75rem;
 }
 
 /* Stili per dispositivi piccoli (smarphone) */
 @media (max-width: 410px) {
+
     .input,
     .select {
         max-width: 165px;

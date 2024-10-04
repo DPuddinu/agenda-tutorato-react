@@ -1,0 +1,1 @@
+export const GET_APPOINTMENTS_KEY = ['appointments']

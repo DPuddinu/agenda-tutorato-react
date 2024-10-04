@@ -1,6 +1,13 @@
 import { api } from '@/core/api';
-import { Appointment, AppointmentPayload, AppointmentSchema } from '@/models/appointment';
+import { AppointmentPayload, AppointmentSchema } from '@/models/appointment';
 import { z } from 'zod';
+
+const schema = z.object({
+  data: AppointmentSchema.array(),
+  page: z.number(),
+  total: z.number(),
+  limit: z.number()
+});
 
 export async function createAppointment(appointmentData: AppointmentPayload) {
   const response = await api.post('/appointments', appointmentData);
@@ -12,14 +19,8 @@ export async function createAppointment(appointmentData: AppointmentPayload) {
   }
   return await response.json();
 }
-
-const schema = z.object({
-  data: AppointmentSchema.array(),
-  page: z.number(),
-  total: z.number(),
-  limit: z.number()
-});
 export type TGetAppointments = z.infer<typeof schema>;
+
 export async function getAppointments(): Promise<TGetAppointments> {
   try {
     const response = await api.get('/appointments');
@@ -30,7 +31,6 @@ export async function getAppointments(): Promise<TGetAppointments> {
     throw error;
   }
 }
-
 export type TGetAppointmentsByAuthorId = z.infer<typeof schema>;
 
 export async function getAppointmentsByAuthorId(): Promise<TGetAppointmentsByAuthorId> {
@@ -56,13 +56,13 @@ export async function getAppointmentById(appointmentId: string) {
   return await response.json();
 }
 
-export async function updateAppointment(appointmentId: string, updatedData: Appointment) {
-  const response = await api.put(`/appointments/${appointmentId}`, updatedData);
+export async function updateAppointment(updatedData: AppointmentPayload) {
+  const response = await api.put(`/appointments/${updatedData.id}`, updatedData);
 
   if (!response.ok) {
     return {
       status: 'error',
-      message: `Failed to update appointment with ID ${appointmentId}`
+      message: `Failed to update appointment with ID ${updatedData.id}`
     };
   }
   return await response.json();
