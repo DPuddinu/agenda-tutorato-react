@@ -1,5 +1,6 @@
 import { forwardRef, ReactNode } from 'react';
 import styles from './appointmentDialog.module.css';
+import Button from '../button/button';
 
 interface DialogProps {
   title: string;
@@ -13,9 +14,9 @@ const Dialog = forwardRef<HTMLDialogElement, DialogProps>(({ title, onClose, chi
       <div className={styles.header}>
         <h2 className={styles.h2}>{title}</h2>
         <form method="dialog">
-          <button type="button" onClick={onClose} className={styles.closeButton}>
+          <Button type="button" onClick={onClose} className={styles.closeButton}>
             X
-          </button>
+          </Button>
         </form>
       </div>
       <div className={styles.body}>{children}</div>

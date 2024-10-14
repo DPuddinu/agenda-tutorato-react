@@ -10,7 +10,7 @@ import styles from './appointmentsPage.module.css';
 
 export const AppointmentsPage = () => {
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const { data, error, isLoading } = useQuery({
+  const { data, error, isLoading, refetch } = useQuery({
     queryKey: ['appointments'],
     queryFn: getAppointmentsByAuthorId
   });
@@ -24,6 +24,7 @@ export const AppointmentsPage = () => {
   const closeDialog = () => {
     if (dialogRef.current) {
       dialogRef.current.close();
+      refetch();
     }
   };
 
@@ -33,7 +34,7 @@ export const AppointmentsPage = () => {
         <p className={styles.title}>Dashboard</p>
         <Button className={styles.addAppBtn} onClick={openDialog} />
         <Dialog title="Add New Appointment" onClose={closeDialog} ref={dialogRef}>
-          <AppointmentForm />
+          <AppointmentForm onClose={closeDialog} />
         </Dialog>
       </div>
       <div>

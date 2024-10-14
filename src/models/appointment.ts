@@ -17,6 +17,6 @@ export const AppointmentPayloadSchema = z.object({
   id: z.number().optional(),
   categoryId: z.number(),
   description: z.string().min(1),
-  dueDate: z.string().pipe(z.coerce.date())
+  dueDate: z.string().pipe(z.coerce.date()).nullish()
 });
 export type AppointmentPayload = z.infer<typeof AppointmentPayloadSchema>;
