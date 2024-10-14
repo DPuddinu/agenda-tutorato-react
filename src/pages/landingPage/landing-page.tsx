@@ -8,10 +8,12 @@ export const LandingPageComponent = () => {
   return (
     <div className="flex flex-col min-h">
       <header className="h-14 flex items-center px-6">
-        <nav className={`flex text-sm grow justify-between ${styles.nav}`}>
-          <Link to="/home" className="flex items-center justify-center">
-            <CalendarIcon />
-          </Link>
+        <nav className={`flex text-sm grow justify-between pt-3 items-center ${styles.nav}`}>
+          <div className="flex grow gap-6 items-center">
+            <Link to="/home" className="flex items-center p-2">
+              <CalendarIcon />
+            </Link>
+          </div>
           <div className="flex justify-end grow gap-6 items-center">
             <a href="#features" className="text-sm font-medium">
               Features

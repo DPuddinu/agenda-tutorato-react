@@ -1,10 +1,12 @@
 import { Appointment } from '@/models/appointment';
 import pencil from '../../assets/icons/pencil.svg';
 import trashcan from '../../assets/icons/trash-can.svg';
+import Button from '../button/button';
 import styles from './appointmentTable.module.css';
 
 type Props = {
   appointments: Appointment[];
+  onDelete: (id: number) => void;
 };
 
 const formatDate = (date: Date | null) => {
@@ -19,7 +21,7 @@ const formatDate = (date: Date | null) => {
   return formattedDate;
 };
 
-export const TableAppointment = ({ appointments }: Props) => {
+export const TableAppointment = ({ appointments, onDelete }: Props) => {
   if (!appointments || appointments.length === 0) {
     return <p>No appointments available.</p>;
   }
@@ -47,11 +49,15 @@ export const TableAppointment = ({ appointments }: Props) => {
                 <td className="px-4 py-3">{formatDate(appointment.dueDate)}</td>
                 <td className="px-4 py-3">{appointment.categoryId}</td>
                 <td className="px-4 py-3">
-                  <img src={pencil} className="icon" alt="Edit" />
+                  <Button className={styles.editDeleteBtn}>
+                    <img src={pencil} className="icon" alt="Edit" />
+                  </Button>
                 </td>
                 <td className="px-4 py-3">{appointment.completed === 'true' ? 'Completed' : 'Pending'}</td>
                 <td className="px-4 py-3">
-                  <img src={trashcan} className="icon" alt="Delete" />
+                  <Button className={styles.editDeleteBtn} onClick={() => onDelete(appointment.id)}>
+                    <img src={trashcan} className="icon" alt="Delete" />
+                  </Button>
                 </td>
               </tr>
             ))}
